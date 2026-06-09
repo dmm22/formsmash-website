@@ -19,7 +19,7 @@ export default function SuccessPage() {
       </div>
       <h1 className="text-center text-3xl font-bold text-bright">You&apos;re all set</h1>
       <p className="mt-4 text-center text-muted leading-relaxed">
-        Thank you for signing up to FormWizard Premium. Your subscription is
+        Thank you for signing up to FormSmash. Your subscription is
         active and you can start using premium features right away.
       </p>
     </PageLayout>

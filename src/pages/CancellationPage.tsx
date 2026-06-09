@@ -7,7 +7,7 @@ export default function CancellationPage() {
         Subscription cancelled
       </h1>
       <p className="mt-4 text-center text-muted leading-relaxed">
-        Your FormWizard Premium subscription has been cancelled. You will not be
+        Your FormSmash subscription has been cancelled. You will not be
         charged again.
       </p>
       <p className="mt-4 text-center text-sm text-muted-strong">
