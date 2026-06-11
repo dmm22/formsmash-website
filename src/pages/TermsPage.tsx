@@ -403,16 +403,18 @@ export default function TermsPage() {
 
       <h2 className={sectionClass}>16. Contact</h2>
       <p className={paragraphClass}>
-        Questions about these Terms:{" "}
-        <a className={linkClass} href="mailto:thejobsmash@gmail.com">
-          thejobsmash@gmail.com
-        </a>
+        Questions about these Terms? Click{" "}
+        <Link to="/contact" className="font-semibold text-marketing-accent no-underline hover:underline">
+          here
+        </Link>
+        .
       </p>
       <p className={paragraphClass}>
-        Privacy requests:{" "}
-        <a className={linkClass} href="mailto:thejobsmash@gmail.com">
-          thejobsmash@gmail.com
-        </a>
+        Privacy requests? Click{" "}
+        <Link to="/contact" className="font-semibold text-marketing-accent no-underline hover:underline">
+          here
+        </Link>
+        .
       </p>
     </LegalPageLayout>
   )

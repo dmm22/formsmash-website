@@ -208,10 +208,11 @@ export default function PrivacyPage() {
 
       <h2 className={sectionClass}>Contact</h2>
       <p className={paragraphClass}>
-        Questions about this policy or your data:{" "}
-        <a className={linkClass} href="mailto:thejobsmash@gmail.com">
-          thejobsmash@gmail.com
-        </a>
+        Questions about this policy or your data? Click{" "}
+        <Link to="/contact" className="font-semibold text-marketing-accent no-underline hover:underline">
+          here
+        </Link>
+        .
       </p>
 
       <div className={`${noticeClass} mb-0 mt-6`}>

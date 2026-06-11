@@ -20,6 +20,19 @@ export default function HomePage() {
             <p className="mt-3 text-[clamp(0.8125rem,1.5vw,1.0625rem)] leading-relaxed text-marketing-text/75">
               Fill Workday, Greenhouse, LinkedIn, Indeed, and more using your documents.
             </p>
+            <p className="mt-2 text-xs text-red-600">
+              Waiting on review from the Chrome Web Store. Check back shortly. In the meantime, check
+              out a demo{" "}
+              <a
+                href="https://www.youtube.com/watch?v=bzdHIPAFG54"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold underline hover:text-red-700"
+              >
+                here
+              </a>
+              .
+            </p>
             <button
               type="button"
               onClick={() =>
