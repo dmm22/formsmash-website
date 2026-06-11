@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import MarketingLayout from "../components/MarketingLayout"
 
 type LegalPageLayoutProps = {
   title: string
@@ -12,25 +13,21 @@ export default function LegalPageLayout({
   children,
 }: LegalPageLayoutProps) {
   return (
-    <div className="min-h-screen bg-app font-sans text-ink">
-      <div className="mx-auto w-full max-w-[720px] px-[4vw] py-12 md:py-16">
-        <header className="mb-8 border-b border-line pb-6">
-          <div className="mb-3 flex items-center gap-3">
-            <img src="/logo.png" alt="" className="h-8 w-8 rounded-lg" width={32} height={32} />
-            <span className="text-sm font-semibold tracking-wide text-accent-edge uppercase">
-              FormSmash
-            </span>
-          </div>
-          <h1 className="text-3xl font-bold tracking-tight text-bright md:text-4xl">{title}</h1>
-          <p className="mt-1 text-sm text-muted-strong">Effective date: {effectiveDate}</p>
+    <MarketingLayout>
+      <section className="w-full px-[clamp(1rem,4vw,3rem)] pb-[clamp(3rem,8vh,6rem)] pt-2">
+        <header className="mb-8 border-b border-marketing-text/15 pb-6">
+          <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight text-marketing-text">
+            {title}
+          </h1>
+          <p className="mt-1 text-sm text-marketing-text/60">Effective date: {effectiveDate}</p>
         </header>
-        <main className="rounded-xl border border-line bg-panel px-6 py-8 md:px-10 md:py-10">
+        <main className="w-full rounded-2xl border border-marketing-text/15 px-6 py-8 md:px-10 md:py-10">
           {children}
         </main>
-        <footer className="mt-8 text-center text-sm text-muted-strong">
+        <footer className="mt-8 text-sm text-marketing-text/60">
           FormSmash · Chrome extension for form autofill
         </footer>
-      </div>
-    </div>
+      </section>
+    </MarketingLayout>
   )
 }

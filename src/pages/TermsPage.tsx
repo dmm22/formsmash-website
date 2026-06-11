@@ -39,7 +39,7 @@ export default function TermsPage() {
       </p>
 
       <div className={noticeClass}>
-        <strong className="text-ink">Paid subscriptions.</strong> If you subscribe to a paid plan,
+        <strong className="text-marketing-text">Paid subscriptions.</strong> If you subscribe to a paid plan,
         your subscription will automatically renew for additional periods of the same duration as
         your initial subscription at FormSmash&apos;s then-current fees unless you cancel before the
         renewal date through the subscription management tools we provide.
@@ -379,25 +379,25 @@ export default function TermsPage() {
 
       <h2 className={sectionClass}>15. General</h2>
       <p className={paragraphClass}>
-        <strong className="text-ink">Entire agreement.</strong> These Terms and the Privacy Policy are
+        <strong className="text-marketing-text">Entire agreement.</strong> These Terms and the Privacy Policy are
         the entire agreement between you and FormSmash regarding the Service and supersede prior
         agreements on the same subject.
       </p>
       <p className={paragraphClass}>
-        <strong className="text-ink">Severability.</strong> If any provision is unenforceable, the
+        <strong className="text-marketing-text">Severability.</strong> If any provision is unenforceable, the
         remaining provisions remain in effect.
       </p>
       <p className={paragraphClass}>
-        <strong className="text-ink">No waiver.</strong> Our failure to enforce a provision is not a
+        <strong className="text-marketing-text">No waiver.</strong> Our failure to enforce a provision is not a
         waiver of our right to do so later.
       </p>
       <p className={paragraphClass}>
-        <strong className="text-ink">Assignment.</strong> You may not assign these Terms without our
+        <strong className="text-marketing-text">Assignment.</strong> You may not assign these Terms without our
         consent. We may assign these Terms in connection with a merger, acquisition, or sale of
         assets.
       </p>
       <p className={paragraphClass}>
-        <strong className="text-ink">Force majeure.</strong> We are not liable for delays or failures
+        <strong className="text-marketing-text">Force majeure.</strong> We are not liable for delays or failures
         caused by events beyond our reasonable control.
       </p>
 

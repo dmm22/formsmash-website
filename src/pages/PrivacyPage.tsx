@@ -29,48 +29,48 @@ export default function PrivacyPage() {
       <p className={paragraphClass}>Depending on how you use the Service, we may collect:</p>
       <ul className={listClass}>
         <li>
-          <strong className="text-ink">Account information.</strong> If you sign in with Google, we
+          <strong className="text-marketing-text">Account information.</strong> If you sign in with Google, we
           receive your email address, display name, profile picture URL, and Google account identifier
           to create and manage your account.
         </li>
         <li>
-          <strong className="text-ink">Authentication data.</strong> We issue access and refresh tokens
+          <strong className="text-marketing-text">Authentication data.</strong> We issue access and refresh tokens
           so you can stay signed in. Tokens are stored in the Extension&apos;s local storage and on
           our servers (refresh tokens are stored in hashed form).
         </li>
         <li>
-          <strong className="text-ink">User content you provide.</strong> This includes saved documents
+          <strong className="text-marketing-text">User content you provide.</strong> This includes saved documents
           (titles and autofill field values), uploaded files (such as PDF or Word documents), Autofill
           Preferences (custom instructions for how forms should be filled), and any other information
           you enter into the Service. This content may include personal information about you or about
           other people (for example, references, employers, or clients listed in a document).
         </li>
         <li>
-          <strong className="text-ink">Document files.</strong> When you upload a document, we store
+          <strong className="text-marketing-text">Document files.</strong> When you upload a document, we store
           the file on our servers, extract text from it, and may send that text to our AI providers to
           generate autofill fields. The stored file and extracted data remain associated with your
           account or browser session until you delete them or your account is deleted.
         </li>
         <li>
-          <strong className="text-ink">Form context for autofill.</strong> When you run autofill, the
+          <strong className="text-marketing-text">Form context for autofill.</strong> When you run autofill, the
           Extension reads form fields on the page you are on (such as labels, input types, and choice
           options). Unfilled fields may be sent to our servers for AI gap-fill, along with relevant
           rows from your active document and your Autofill Preferences.
         </li>
         <li>
-          <strong className="text-ink">Usage and limits data.</strong> We assign a browser-specific
+          <strong className="text-marketing-text">Usage and limits data.</strong> We assign a browser-specific
           client identifier and may record operation counts, token usage per AI request, timestamps, and
           your IP address for rate limiting, abuse prevention, and billing limits. Some usage may be
           recorded before you sign in and linked to your account after you sign in.
         </li>
         <li>
-          <strong className="text-ink">Payment-related identifiers.</strong> If you subscribe, we use
+          <strong className="text-marketing-text">Payment-related identifiers.</strong> If you subscribe, we use
           Stripe for checkout and billing. We store Stripe customer and subscription identifiers on our
           side. Stripe processes payment details under its own privacy policy; we do not store full
           card numbers.
         </li>
         <li>
-          <strong className="text-ink">Technical and diagnostic data.</strong> Our servers log request
+          <strong className="text-marketing-text">Technical and diagnostic data.</strong> Our servers log request
           metadata (such as paths, status codes, and error types). If enabled, we may use error
           monitoring services (such as Sentry) that receive exception details. Server logs are not
           intended to include full document or autofill contents unless required for debugging.
@@ -109,30 +109,30 @@ export default function PrivacyPage() {
       <p className={paragraphClass}>We share information only as needed to operate the Service:</p>
       <ul className={listClass}>
         <li>
-          <strong className="text-ink">AI providers.</strong> We send relevant user content (document
+          <strong className="text-marketing-text">AI providers.</strong> We send relevant user content (document
           text, autofill field data, form field labels, and Autofill Preferences) to third-party AI services
           (such as OpenAI and Google) to provide gap-fill and document field extraction. Those
           providers process data under their own terms and privacy policies. We cannot control
           third-party practices.
         </li>
         <li>
-          <strong className="text-ink">Google.</strong> We use Google Sign-In (OAuth) for
+          <strong className="text-marketing-text">Google.</strong> We use Google Sign-In (OAuth) for
           authentication. Google&apos;s use of information is governed by Google&apos;s policies.
         </li>
         <li>
-          <strong className="text-ink">Stripe.</strong> We use Stripe for payments and subscription
+          <strong className="text-marketing-text">Stripe.</strong> We use Stripe for payments and subscription
           management.
         </li>
         <li>
-          <strong className="text-ink">Infrastructure providers.</strong> We host our API and database
+          <strong className="text-marketing-text">Infrastructure providers.</strong> We host our API and database
           with cloud providers that process data on our behalf under contractual obligations.
         </li>
         <li>
-          <strong className="text-ink">Legal and safety.</strong> We may disclose information if
+          <strong className="text-marketing-text">Legal and safety.</strong> We may disclose information if
           required by law, to protect rights and safety, or to prevent fraud or abuse.
         </li>
         <li>
-          <strong className="text-ink">Business transfers.</strong> If we are involved in a merger,
+          <strong className="text-marketing-text">Business transfers.</strong> If we are involved in a merger,
           acquisition, or sale of assets, we may transfer information subject to this policy and
           applicable law.
         </li>
@@ -215,7 +215,7 @@ export default function PrivacyPage() {
       </p>
 
       <div className={`${noticeClass} mb-0 mt-6`}>
-        <strong className="text-ink">Chrome Web Store — Limited Use.</strong> The use of information
+        <strong className="text-marketing-text">Chrome Web Store — Limited Use.</strong> The use of information
         received from Google APIs will adhere to the{" "}
         <a
           className={linkClass}
