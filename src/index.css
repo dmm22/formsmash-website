@@ -23,6 +23,10 @@
   --color-border-primary: #3a4251;
 }
 
+html {
+  @apply text-[75%] lg:text-[100%];
+}
+
 body {
   @apply font-sans antialiased text-text-primary bg-bg-primary;
 }
