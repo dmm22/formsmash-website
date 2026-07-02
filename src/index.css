@@ -15,7 +15,7 @@
   --color-accent: #6e83ff;
   --color-accent-hover: #89f;
 
-  --color-text-primary: #f4f6f9;
+  --color-text-primary: #141414;
   --color-text-secondary: #b8bfcb;
 
   --color-danger: #ff6467;
@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  @apply font-sans antialiased text-text-primary bg-bg-primary;
+  @apply font-sans text-text-primary antialiased bg-[#BBC8F7];
 }
 
 button {
