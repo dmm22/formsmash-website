@@ -3,7 +3,11 @@ import { Link } from "react-router-dom"
 import { IoMdMenu } from "react-icons/io"
 import logo from "../assets/logo.png"
 
-export default function Navbar() {
+type NavbarProps = {
+  navColorMode: "light" | "dark"
+}
+
+export default function Navbar({ navColorMode }: NavbarProps) {
   const [menuOpen, setIsMenuOpen] = useState(false)
   const [menuMounted, setMenuMounted] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
@@ -67,7 +71,9 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 z-50 flex w-full items-center justify-between p-4 bg-background">
+      <nav
+        className={`fixed top-0 left-0 z-50 flex w-full items-center justify-between p-4 bg-background ${navColorMode === "light" ? "text-white" : ""}`}
+      >
         <Link to="/">
           <div className="flex items-center gap-2">
             <img src={logo} alt="Formsmash Logo" />

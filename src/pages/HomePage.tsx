@@ -2,7 +2,11 @@ import accuracyGif from "../assets/accuracy.gif"
 import autofillDataGif from "../assets/autofill-data.gif"
 import GifTextSection from "../components/GifTextSection"
 
-export default function HomePage() {
+type HomePageProps = {
+  setNavColorMode: (colorMode: "light" | "dark") => void
+}
+
+export default function HomePage({ setNavColorMode }: HomePageProps) {
   const renderBattleTestedSection = () => {
     const title = (
       <h2>
@@ -34,6 +38,7 @@ export default function HomePage() {
         title={title}
         bullets={bullets}
         isAccentBackground
+        setNavColorMode={setNavColorMode}
       />
     )
   }

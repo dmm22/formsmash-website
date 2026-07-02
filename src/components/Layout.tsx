@@ -3,9 +3,10 @@ import Navbar from "./Navbar"
 
 type LayoutProps = {
   children: React.ReactNode
+  navColorMode: "light" | "dark"
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, navColorMode }: LayoutProps) {
   return (
     <>
       <div
@@ -13,7 +14,7 @@ export default function Layout({ children }: LayoutProps) {
         className="pointer-events-none fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${background})` }}
       />
-      <Navbar />
+      <Navbar navColorMode={navColorMode} />
       {children}
     </>
   )
