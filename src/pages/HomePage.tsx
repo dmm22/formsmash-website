@@ -1,17 +1,14 @@
 import accuracyGif from "../assets/accuracy.gif"
 import autofillDataGif from "../assets/autofill-data.gif"
 import GifTextSection from "../components/GifTextSection"
+import installGif from "../assets/install.gif"
 
-type HomePageProps = {
-  setNavColorMode: (colorMode: "light" | "dark") => void
-}
-
-export default function HomePage({ setNavColorMode }: HomePageProps) {
+export default function HomePage() {
   const renderBattleTestedSection = () => {
     const title = (
-      <h2>
+      <>
         Battle Tested On <span className="text-accent">Real Applications</span>
-      </h2>
+      </>
     )
     const bullets = [
       "Works on LinkedIn, Indeed, Greenhouse Jobs, Workday, and company career sites",
@@ -23,7 +20,7 @@ export default function HomePage({ setNavColorMode }: HomePageProps) {
   }
 
   const renderReviewWhatsUsedSection = () => {
-    const title = <h2>Review What FormSmash Uses To Fill Applications</h2>
+    const title = <>Review What FormSmash Uses To Fill Applications</>
     const bullets = [
       "Review and edit extracted information before using it",
       "Add answers that aren't included in your resume",
@@ -38,15 +35,26 @@ export default function HomePage({ setNavColorMode }: HomePageProps) {
         title={title}
         bullets={bullets}
         isAccentBackground
-        setNavColorMode={setNavColorMode}
       />
     )
+  }
+
+  const renderTryFormSmashSection = () => {
+    const title = (
+      <>
+        Try FormSmash in <span className="text-accent">Under a Minute</span>
+      </>
+    )
+    const bullets = ["No account creation", "No credit card", "No lengthy setup process"]
+
+    return <GifTextSection gif={installGif} gifAlt="Try FormSmash in under a minute" title={title} bullets={bullets} />
   }
 
   return (
     <main className="w-full">
       {renderBattleTestedSection()}
       {renderReviewWhatsUsedSection()}
+      {renderTryFormSmashSection()}
     </main>
   )
 }

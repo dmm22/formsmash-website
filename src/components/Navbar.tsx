@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { IoMdMenu } from "react-icons/io"
 import logo from "../assets/logo.png"
 
-type NavbarProps = {
-  navColorMode: "light" | "dark"
-}
+export default function Navbar() {
+  const location = useLocation()
 
-export default function Navbar({ navColorMode }: NavbarProps) {
   const [menuOpen, setIsMenuOpen] = useState(false)
   const [menuMounted, setMenuMounted] = useState(false)
+  const [navColorClass, setNavColorClass] = useState("text-primary")
+
   const menuRef = useRef<HTMLDivElement>(null)
   const panelRef = useRef<HTMLUListElement>(null)
 
@@ -36,10 +36,39 @@ export default function Navbar({ navColorMode }: NavbarProps) {
   }
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (!menuRef.current) return
-      if (menuRef.current.contains(event.target as Node)) return
-      if (!menuOpen) return
+    if (location.pathname !== "/") {
+      setNavColorClass("text-primary")
+      return
+    }
+
+    const handleScroll = () => {
+      const sectionIndex = Math.floor(window.scrollY / window.innerHeight)
+
+      setNavColorClass(sectionIndex % 2 === 0 ? "text-primary" : "text-white")
+    }
+
+    handleScroll()
+
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [location.pathname])
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!menuRef.current) {
+        return
+      }
+
+      if (menuRef.current.contains(event.target as Node)) {
+        return
+      }
+
+      if (!menuOpen) {
+        return
+      }
 
       closeMenu()
     }
@@ -52,7 +81,9 @@ export default function Navbar({ navColorMode }: NavbarProps) {
   }, [menuOpen])
 
   useEffect(() => {
-    if (!menuMounted) return
+    if (!menuMounted) {
+      return
+    }
 
     const frame = requestAnimationFrame(() => {
       setIsMenuOpen(true)
@@ -62,26 +93,32 @@ export default function Navbar({ navColorMode }: NavbarProps) {
   }, [menuMounted])
 
   const handlePanelTransitionEnd = (event: React.TransitionEvent<HTMLUListElement>) => {
-    if (event.target !== panelRef.current) return
-    if (event.propertyName !== "transform") return
-    if (menuOpen) return
+    if (event.target !== panelRef.current) {
+      return
+    }
+
+    if (event.propertyName !== "transform") {
+      return
+    }
+
+    if (menuOpen) {
+      return
+    }
 
     setMenuMounted(false)
   }
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 z-50 flex w-full items-center justify-between p-4 bg-background ${navColorMode === "light" ? "text-white" : ""}`}
-      >
+      <nav className={`fixed top-0 left-0 z-50 flex w-full items-center justify-between bg-background p-4 ${navColorClass}`}>
         <Link to="/">
           <div className="flex items-center gap-2">
             <img src={logo} alt="Formsmash Logo" />
-            <span className="font-semibold invisible lg:visible">FormSmash</span>
+            <span className="invisible font-semibold lg:visible">FormSmash</span>
           </div>
         </Link>
 
-        <ul className="hidden md:flex items-center gap-10">
+        <ul className="hidden items-center gap-10 md:flex">
           <li>
             <Link to="/about">About</Link>
           </li>
@@ -92,14 +129,16 @@ export default function Navbar({ navColorMode }: NavbarProps) {
 
         <div ref={menuRef} className="relative md:hidden">
           <button className="relative z-50 outline-none" onClick={toggleMenu}>
-            <IoMdMenu className={`${menuOpen ? "text-white" : "block"}`} size={32} />
+            <IoMdMenu className={menuOpen ? "text-white" : navColorClass} size={32} />
           </button>
 
           {menuMounted && (
             <ul
               ref={panelRef}
               onTransitionEnd={handlePanelTransitionEnd}
-              className={`fixed right-0 top-0 flex h-96 w-screen flex-col items-center justify-center gap-14 bg-accent p-4 text-2xl text-white shadow-lg transition-transform duration-300 ease-in-out ${menuOpen ? "translate-y-0" : "-translate-y-full"}`}
+              className={`fixed top-0 right-0 flex h-96 w-screen flex-col items-center justify-center gap-14 bg-accent p-4 text-2xl text-white shadow-lg transition-transform duration-300 ease-in-out ${
+                menuOpen ? "translate-y-0" : "-translate-y-full"
+              }`}
             >
               <li>
                 <Link to="/" onClick={closeMenu}>
