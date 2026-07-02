@@ -1,7 +1,14 @@
-export default function Layout() {
+import Navbar from "./Navbar"
+
+type LayoutProps = {
+  children: React.ReactNode
+}
+
+export default function Layout({ children }: LayoutProps) {
   return (
-    <main>
-      <p>Layout</p>
-    </main>
+    <>
+      <Navbar />
+      {children}
+    </>
   )
 }

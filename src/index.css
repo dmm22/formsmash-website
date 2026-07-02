@@ -24,9 +24,17 @@
 }
 
 body {
-  @apply font-sans antialiased text-[90%] h-[580px] w-[780px] text-text-primary bg-bg-primary;
+  @apply font-sans antialiased text-text-primary bg-bg-primary;
 }
 
 button {
   @apply cursor-pointer transition-all duration-300 ease-in-out;
+}
+
+h1 {
+  @apply text-6xl font-bold;
+}
+
+h2 {
+  @apply text-5xl font-bold;
 }
