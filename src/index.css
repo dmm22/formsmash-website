@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-600.css";
+@import "@fontsource/inter/latin-700.css";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --color-bg-primary: #111317;
+  --color-bg-secondary: #171a20;
+  --color-bg-tertiary: #222833;
+
+  --color-accent: #6e83ff;
+  --color-accent-hover: #89f;
+
+  --color-text-primary: #f4f6f9;
+  --color-text-secondary: #b8bfcb;
+
+  --color-danger: #ff6467;
+
+  --color-border-primary: #3a4251;
+}
+
+body {
+  @apply font-sans antialiased text-[90%] h-[580px] w-[780px] text-text-primary bg-bg-primary;
+}
+
+button {
+  @apply cursor-pointer transition-all duration-300 ease-in-out;
+}
