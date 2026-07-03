@@ -2,6 +2,7 @@ import accuracyGif from "../assets/accuracy.gif"
 import autofillDataGif from "../assets/autofill-data.gif"
 import GifTextSection from "../components/GifTextSection"
 import installGif from "../assets/install.gif"
+import Hero from "../components/Hero"
 
 export default function HomePage() {
   const renderBattleTestedSection = () => {
@@ -52,6 +53,7 @@ export default function HomePage() {
 
   return (
     <main className="w-full">
+      <Hero />
       {renderBattleTestedSection()}
       {renderReviewWhatsUsedSection()}
       {renderTryFormSmashSection()}

@@ -110,7 +110,9 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 z-50 flex w-full items-center justify-between bg-background p-4 ${navColorClass}`}>
+      <nav
+        className={`fixed top-0 left-0 z-50 flex w-full items-center justify-between bg-background p-4 lg:p-8 ${navColorClass} transition-colors duration-300 ease-in-out`}
+      >
         <Link to="/">
           <div className="flex items-center gap-2">
             <img src={logo} alt="Formsmash Logo" />
@@ -120,10 +122,14 @@ export default function Navbar() {
 
         <ul className="hidden items-center gap-10 md:flex">
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/about" className="transition-colors hover:text-accent">
+              About
+            </Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link to="/contact" className="transition-colors hover:text-accent">
+              Contact
+            </Link>
           </li>
         </ul>
 
@@ -141,17 +147,17 @@ export default function Navbar() {
               }`}
             >
               <li>
-                <Link to="/" onClick={closeMenu}>
+                <Link to="/" onClick={closeMenu} className="transition-colors hover:text-accent">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" onClick={closeMenu}>
+                <Link to="/about" onClick={closeMenu} className="transition-colors hover:text-accent">
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/contact" onClick={closeMenu}>
+                <Link to="/contact" onClick={closeMenu} className="transition-colors hover:text-accent">
                   Contact
                 </Link>
               </li>
