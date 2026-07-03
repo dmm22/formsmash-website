@@ -13,13 +13,30 @@ export default function GifTextSection({
   bullets,
   isAccentBackground = false,
 }: GifTextSectionProps) {
-  const baseClasses =
-    "flex flex-col flex-col-reverse gap-18 justify-center items-center h-[80dvh] lg:grid lg:grid-cols-[1fr_1fr] lg:justify-items-center lg:h-screen";
+  const containerClasses = `
+    relative
+  
+    flex 
+    flex-col 
+    flex-col-reverse 
+    gap-18 
+    justify-center 
+    items-center 
+
+    h-[80dvh] 
+
+    lg:grid 
+    lg:grid-cols-[1fr_1fr] 
+    lg:justify-items-center 
+    lg:h-screen
+
+    ${isAccentBackground && "bg-accent text-text-primary"}
+  `;
 
   return (
     <section
       data-nav-background={isAccentBackground ? "accent" : "image"}
-      className={`relative ${baseClasses} ${isAccentBackground ? "bg-accent text-text-primary" : ""}`}
+      className={containerClasses}
     >
       <img
         src={gif}

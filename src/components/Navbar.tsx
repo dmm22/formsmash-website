@@ -18,12 +18,36 @@ const navLinks: NavLinkItem[] = [
   { label: "Contact", to: "/contact" },
 ];
 
-const navShellBaseClass = "fixed top-0 left-0 z-50 isolate w-screen p-4 lg:p-6";
-const navLinkClass = "transition-colors hover:text-accent";
-const mobilePanelBaseClass =
-  "fixed top-0 right-0 flex h-96 w-screen flex-col items-center justify-center gap-14 bg-accent p-4 text-2xl text-white shadow-lg transition-transform duration-300 ease-in-out";
-const mobileLinkClass = "transition-colors hover:text-accent-hover";
-const pageBackgroundColor = "#BBC8F7";
+const navBaseClasses = "fixed top-0 left-0 z-50 isolate w-screen p-4 lg:p-6";
+
+const mobileContextManuBaseClasses = `
+  fixed 
+  top-0 
+  right-0 
+
+  flex
+
+  h-96 
+  w-screen 
+
+  flex-col 
+  items-center 
+  justify-center 
+  gap-14 
+
+  bg-accent 
+
+  p-4 
+
+  text-2xl 
+  text-white 
+
+  shadow-lg 
+
+  transition-transform 
+  duration-300 
+  ease-in-out
+`;
 
 function resolveMobilePanelTransform(menuOpen: boolean) {
   if (menuOpen) {
@@ -38,15 +62,7 @@ function shouldDismissMenuOnOutsideClick(
   target: Node,
   menuOpen: boolean,
 ) {
-  if (!menuRoot) {
-    return false;
-  }
-
-  if (menuRoot.contains(target)) {
-    return false;
-  }
-
-  if (!menuOpen) {
+  if (!menuRoot || !menuRoot.contains(target) || !menuOpen) {
     return false;
   }
 
@@ -54,26 +70,18 @@ function shouldDismissMenuOnOutsideClick(
 }
 
 function shouldUnmountMobilePanel(
-  event: React.TransitionEvent<HTMLUListElement>,
+  e: React.TransitionEvent<HTMLUListElement>,
   panel: HTMLUListElement | null,
   menuOpen: boolean,
 ) {
-  if (event.target !== panel) {
-    return false;
-  }
-
-  if (event.propertyName !== "transform") {
-    return false;
-  }
-
-  if (menuOpen) {
+  if (e.target !== panel || e.propertyName !== "transform" || menuOpen) {
     return false;
   }
 
   return true;
 }
 
-function readActiveNavBackground(navBottom: number): NavBackgroundMode {
+function getNavBackgroundMode(navBottom: number) {
   const sections = document.querySelectorAll("[data-nav-background]");
 
   let activeMode: NavBackgroundMode = "image";
@@ -104,7 +112,7 @@ function readActiveNavBackground(navBottom: number): NavBackgroundMode {
   return activeMode;
 }
 
-function resolveNavTextClass(mode: NavBackgroundMode) {
+function getNavTextColor(mode: NavBackgroundMode) {
   if (mode === "accent") {
     return "text-white";
   }
@@ -112,7 +120,7 @@ function resolveNavTextClass(mode: NavBackgroundMode) {
   return "text-text-primary";
 }
 
-function renderNavBackground(mode: NavBackgroundMode) {
+function renderNavBackgroundElement(mode: NavBackgroundMode) {
   if (mode === "accent") {
     return (
       <div
@@ -126,7 +134,7 @@ function renderNavBackground(mode: NavBackgroundMode) {
     <div
       aria-hidden
       className="absolute inset-0 overflow-hidden transition-colors duration-300"
-      style={{ backgroundColor: pageBackgroundColor }}
+      style={{ backgroundColor: "#BBC8F7" }}
     >
       <div
         className="pointer-events-none absolute top-0 left-0 w-screen bg-cover bg-center bg-no-repeat opacity-80"
@@ -159,7 +167,7 @@ export default function Navbar() {
 
   const [menuOpen, setIsMenuOpen] = useState(false);
   const [menuMounted, setMenuMounted] = useState(false);
-  const [navBackgroundMode, setNavBackgroundMode] =
+  const [backgroundMode, setBackgroundMode] =
     useState<NavBackgroundMode>("image");
 
   const navRef = useRef<HTMLElement>(null);
@@ -197,12 +205,12 @@ export default function Navbar() {
 
     const syncNavBackground = () => {
       if (location.pathname !== "/") {
-        setNavBackgroundMode("image");
+        setBackgroundMode("image");
         return;
       }
 
       const navBottom = nav.getBoundingClientRect().bottom;
-      setNavBackgroundMode(readActiveNavBackground(navBottom));
+      setBackgroundMode(getNavBackgroundMode(navBottom));
     };
 
     syncNavBackground();
@@ -271,11 +279,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav ref={navRef} className={navShellBaseClass}>
-        {renderNavBackground(navBackgroundMode)}
+      <nav ref={navRef} className={navBaseClasses}>
+        {renderNavBackgroundElement(backgroundMode)}
 
         <div
-          className={`relative flex w-full items-center justify-between ${resolveNavTextClass(navBackgroundMode)}`}
+          className={`relative flex w-full items-center justify-between ${getNavTextColor(backgroundMode)}`}
         >
           <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="Formsmash Logo" />
@@ -285,7 +293,10 @@ export default function Navbar() {
           <ul className="hidden items-center gap-10 md:flex">
             {desktopLinks.map((link) => (
               <li key={link.to}>
-                <Link to={link.to} className={navLinkClass}>
+                <Link
+                  to={link.to}
+                  className="transition-colors hover:text-accent"
+                >
                   {link.label}
                 </Link>
               </li>
@@ -300,7 +311,7 @@ export default function Navbar() {
               aria-expanded={menuOpen}
             >
               <IoMdMenu
-                className={resolveMenuIconClass(menuOpen, navBackgroundMode)}
+                className={resolveMenuIconClass(menuOpen, backgroundMode)}
                 size={32}
               />
             </button>
@@ -309,14 +320,14 @@ export default function Navbar() {
               <ul
                 ref={panelRef}
                 onTransitionEnd={handlePanelTransitionEnd}
-                className={`${mobilePanelBaseClass} ${resolveMobilePanelTransform(menuOpen)}`}
+                className={`${mobileContextManuBaseClasses} ${resolveMobilePanelTransform(menuOpen)}`}
               >
                 {mobileLinks.map((link) => (
                   <li key={link.to}>
                     <Link
                       to={link.to}
                       onClick={closeMenu}
-                      className={mobileLinkClass}
+                      className="transition-colors hover:text-accent-hover"
                     >
                       {link.label}
                     </Link>
