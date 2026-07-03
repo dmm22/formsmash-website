@@ -18,7 +18,8 @@ const navLinks: NavLinkItem[] = [
   { label: "Contact", to: "/contact" },
 ];
 
-const navBaseClasses = "fixed top-0 left-0 z-50 isolate w-screen p-4 lg:p-6";
+const navBaseClasses =
+  "fixed top-0 left-0 z-50 isolate w-screen p-4 lg:p-6 outline-none";
 
 const mobileContextManuBaseClasses = `
   fixed 
@@ -42,7 +43,7 @@ const mobileContextManuBaseClasses = `
   text-2xl 
   text-white 
 
-  shadow-lg 
+  shadow-xl 
 
   transition-transform 
   duration-300 
@@ -62,7 +63,11 @@ function shouldDismissMenuOnOutsideClick(
   target: Node,
   menuOpen: boolean,
 ) {
-  if (!menuRoot || !menuRoot.contains(target) || !menuOpen) {
+  if (!menuRoot || !menuOpen) {
+    return false;
+  }
+
+  if (menuRoot.contains(target)) {
     return false;
   }
 
@@ -134,10 +139,10 @@ function renderNavBackgroundElement(mode: NavBackgroundMode) {
     <div
       aria-hidden
       className="absolute inset-0 overflow-hidden transition-colors duration-300"
-      style={{ backgroundColor: "#BBC8F7" }}
+      style={{ backgroundColor: "white" }}
     >
       <div
-        className="pointer-events-none absolute top-0 left-0 w-screen bg-cover bg-center bg-no-repeat opacity-80"
+        className="pointer-events-none absolute top-0 left-0 w-screen bg-cover bg-center bg-no-repeat opacity-90"
         style={{
           backgroundImage: `url(${background})`,
           height: "100vh",
@@ -283,7 +288,7 @@ export default function Navbar() {
         {renderNavBackgroundElement(backgroundMode)}
 
         <div
-          className={`relative flex w-full items-center justify-between ${getNavTextColor(backgroundMode)}`}
+          className={`relative flex items-center justify-between ${getNavTextColor(backgroundMode)}`}
         >
           <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="Formsmash Logo" />
@@ -338,13 +343,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-
-      <div aria-hidden className="pointer-events-none p-4 lg:p-6">
-        <div className="flex items-center gap-2 opacity-0">
-          <img src={logo} alt="" />
-          <span className="hidden font-semibold lg:inline">FormSmash</span>
-        </div>
-      </div>
     </>
   );
 }

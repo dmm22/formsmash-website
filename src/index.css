@@ -16,7 +16,7 @@
   --color-accent-hover: #89f;
 
   --color-text-primary: #141414;
-  --color-text-secondary: #b8bfcb;
+  --color-text-secondary: #696969;
 
   --color-danger: #ff6467;
 
@@ -24,11 +24,17 @@
 }
 
 html {
-  @apply text-[75%] lg:text-[100%];
+  @apply text-[85%] 2xl:text-[100%];
+}
+
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
 }
 
 body {
-  @apply bg-[#BBC8F7] font-sans text-text-primary antialiased;
+  @apply bg-white font-sans text-text-primary antialiased;
 }
 
 button {
@@ -36,9 +42,9 @@ button {
 }
 
 h1 {
-  @apply text-6xl font-bold;
+  @apply text-4xl font-[900] lg:text-5xl;
 }
 
 h2 {
-  @apply text-5xl font-bold;
+  @apply text-3xl font-[600] lg:text-5xl;
 }

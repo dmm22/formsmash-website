@@ -11,15 +11,15 @@ export default function Layout({ children }: LayoutProps) {
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-10"
-        style={{ backgroundColor: "#BBC8F7" }}
+        style={{ backgroundColor: "white" }}
       >
         <div
-          className="h-full w-full bg-cover bg-center bg-no-repeat opacity-80"
+          className="h-full w-full bg-cover bg-center bg-no-repeat opacity-90"
           style={{ backgroundImage: `url(${background})` }}
         />
       </div>
       <Navbar />
-      {children}
+      <div className="p-4 lg:p-6">{children}</div>
     </>
   );
 }

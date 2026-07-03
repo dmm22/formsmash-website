@@ -1,21 +1,37 @@
 import fillFormGif from "../assets/fill-form.gif";
+import Gif from "./Gif";
 
 export default function Hero() {
+  const heroClasses = `
+    h-screen
+
+    flex
+    flex-col
+    items-center
+    justify-center
+    gap-18
+
+    lg:h-screen
+    lg:flex-row
+    lg:justify-items-center
+    lg:p-6
+  `;
+
   return (
-    <section
-      data-nav-background="image"
-      className="flex h-[80dvh] items-center flex-col justify-center gap-18 lg:h-screen lg:flex-row lg:justify-items-center lg:p-8"
-    >
-      <div className="flex flex-col gap-4">
-        <h1>Autoill job applications in one click</h1>
-        <p className="text-text-tertiary">
-          Autofill Workday, Greenhouse, LinkedIn, Indeed, and more in one click.
+    <section data-nav-background="image" className={heroClasses}>
+      <div className="flex flex-col items-center gap-4 lg:items-start">
+        <h1 className="text-center lg:text-left">
+          Never Type Your Resume Into Another Job Application Again
+        </h1>
+
+        <p className="text-center text-lg text-text-secondary lg:text-left">
+          The Form Shouldn't Be the Hardest Part of Applying.
         </p>
-        <button className="w-max rounded-lg bg-orange-500 px-5 py-2.5 text-lg text-white hover:bg-orange-600">
+        <button className="w-1/2 rounded-lg bg-orange-500 px-5 py-2.5 text-lg text-white hover:bg-orange-600">
           Try it for free
         </button>
       </div>
-      <img src={fillFormGif} alt="Fill form gif" />
+      <Gif src={fillFormGif} alt="Fill form gif" />
     </section>
   );
 }

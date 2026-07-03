@@ -1,3 +1,5 @@
+import Gif from "./Gif";
+
 type GifTextSectionProps = {
   gif: string;
   gifAlt: string;
@@ -30,7 +32,7 @@ export default function GifTextSection({
     lg:justify-items-center 
     lg:h-screen
 
-    ${isAccentBackground && "bg-accent text-text-primary"}
+    ${isAccentBackground && "bg-accent text-text-primary -mx-4 p-4 lg:-mx-6 lg:p-6"}
   `;
 
   return (
@@ -38,16 +40,12 @@ export default function GifTextSection({
       data-nav-background={isAccentBackground ? "accent" : "image"}
       className={containerClasses}
     >
-      <img
-        src={gif}
-        alt={gifAlt}
-        className={`rounded-lg lg:max-w-11/12 ${isAccentBackground ? "lg:order-2" : ""}`}
-      />
+      <Gif src={gif} alt={gifAlt} />
       <div
-        className={`flex flex-col gap-14 lg:max-w-11/12 ${isAccentBackground ? "text-white" : ""}`}
+        className={`flex w-full flex-col gap-14 ${isAccentBackground ? "text-white" : ""}`}
       >
-        <h2>{title}</h2>
-        <ul className="flex list-inside list-disc flex-col gap-6 text-xl">
+        <h2 className="text-center lg:text-left">{title}</h2>
+        <ul className="flex list-outside list-disc flex-col gap-6 pl-6 text-xl">
           {bullets.map((bullet) => (
             <li key={bullet}>{bullet}</li>
           ))}
