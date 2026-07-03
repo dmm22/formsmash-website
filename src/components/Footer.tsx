@@ -1,4 +1,4 @@
-import FooterSection from "./FooterSection"
+import FooterSection from "./FooterSection";
 
 export default function Footer() {
   const footerSections = [
@@ -22,13 +22,17 @@ export default function Footer() {
       title: "About",
       links: [{ label: "About FormSmash", href: "#" }],
     },
-  ]
+  ];
 
   return (
     <footer>
-      {footerSections.map(section => (
-        <FooterSection key={section.title} title={section.title} links={section.links} />
+      {footerSections.map((section) => (
+        <FooterSection
+          key={section.title}
+          title={section.title}
+          links={section.links}
+        />
       ))}
     </footer>
-  )
+  );
 }

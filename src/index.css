@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  @apply font-sans text-text-primary antialiased bg-[#BBC8F7];
+  @apply bg-[#BBC8F7] font-sans text-text-primary antialiased;
 }
 
 button {

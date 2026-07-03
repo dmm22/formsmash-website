@@ -1,4 +1,4 @@
-import PageHeader from "../components/PageHeader"
+import PageHeader from "../components/PageHeader";
 
 export default function ContactPage() {
   return (
@@ -8,12 +8,15 @@ export default function ContactPage() {
         <div className="flex flex-col gap-2">
           <div>
             <p>
-              I set up the FormSmash Assistant with everything it needs to help with troubleshooting, setup, feature questions, and common issues.
+              I set up the FormSmash Assistant with everything it needs to help
+              with troubleshooting, setup, feature questions, and common issues.
             </p>
             <br />
             <p>
-              If you'd like a quick answer, it's usually the fastest place to start. If you still need help, run into a bug, or just prefer to reach
-              out directly, send me a message below and I'll take a look as soon as I can.
+              If you'd like a quick answer, it's usually the fastest place to
+              start. If you still need help, run into a bug, or just prefer to
+              reach out directly, send me a message below and I'll take a look
+              as soon as I can.
             </p>
             <button>...</button>
           </div>
@@ -35,5 +38,5 @@ export default function ContactPage() {
         </div>
       </section>
     </main>
-  )
+  );
 }

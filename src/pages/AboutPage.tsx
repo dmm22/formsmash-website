@@ -1,5 +1,5 @@
-import AboutSection from "../components/AboutSection"
-import PageHeader from "../components/PageHeader"
+import AboutSection from "../components/AboutSection";
+import PageHeader from "../components/PageHeader";
 
 export default function AboutPage() {
   return (
@@ -17,5 +17,5 @@ export default function AboutPage() {
         </p>
       </section>
     </main>
-  )
+  );
 }

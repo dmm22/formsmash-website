@@ -1,7 +1,7 @@
 type PageHeaderProps = {
-  image: React.ReactNode
-  title: string
-}
+  image: React.ReactNode;
+  title: string;
+};
 
 export default function PageHeader({ image, title }: PageHeaderProps) {
   return (
@@ -9,5 +9,5 @@ export default function PageHeader({ image, title }: PageHeaderProps) {
       {image}
       <h2>{title}</h2>
     </header>
-  )
+  );
 }
