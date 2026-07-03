@@ -19,7 +19,7 @@ export default function Layout({ children }: LayoutProps) {
         />
       </div>
       <Navbar />
-      <div className="p-4 lg:p-6">{children}</div>
+      <div className="p-4 xl:p-6">{children}</div>
     </>
   );
 }

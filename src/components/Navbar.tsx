@@ -19,7 +19,7 @@ const navLinks: NavLinkItem[] = [
 ];
 
 const navBaseClasses =
-  "fixed top-0 left-0 z-50 isolate w-screen p-4 lg:p-6 outline-none";
+  "fixed top-0 left-0 z-50 isolate w-screen p-4 xl:p-6 outline-none";
 
 const mobileContextManuBaseClasses = `
   fixed 
@@ -36,7 +36,7 @@ const mobileContextManuBaseClasses = `
   justify-center 
   gap-14 
 
-  bg-accent 
+  bg-accent-gradient 
 
   p-4 
 
@@ -130,7 +130,7 @@ function renderNavBackgroundElement(mode: NavBackgroundMode) {
     return (
       <div
         aria-hidden
-        className="absolute inset-0 bg-accent transition-colors duration-300"
+        className="absolute inset-0 bg-accent-gradient transition-colors duration-300"
       />
     );
   }
@@ -292,7 +292,7 @@ export default function Navbar() {
         >
           <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="Formsmash Logo" />
-            <span className="hidden font-semibold lg:inline">FormSmash</span>
+            <span className="hidden font-semibold xl:inline">FormSmash</span>
           </Link>
 
           <ul className="hidden items-center gap-10 md:flex">

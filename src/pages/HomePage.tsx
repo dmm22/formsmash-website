@@ -3,6 +3,7 @@ import autofillDataGif from "../assets/autofill-data.gif";
 import GifTextSection from "../components/GifTextSection";
 import installGif from "../assets/install.gif";
 import Hero from "../components/Hero";
+import WithOrWithoutSection from "../components/WithOrWithoutSection";
 
 export default function HomePage() {
   const renderBattleTestedSection = () => {
@@ -72,9 +73,15 @@ export default function HomePage() {
   return (
     <main className="w-full">
       <Hero />
+      <hr className="-mx-4 border-b border-text-secondary xl:-mx-6" />
+      <WithOrWithoutSection />
+      <hr className="-mx-4 border-b border-text-secondary xl:-mx-6" />
       {renderBattleTestedSection()}
+      <hr className="-mx-4 border-b border-text-secondary xl:-mx-6" />
       {renderReviewWhatsUsedSection()}
+      <hr className="-mx-4 border-b border-text-secondary xl:-mx-6" />
       {renderTryFormSmashSection()}
+      <hr className="-mx-4 border-b border-text-secondary xl:-mx-6" />
     </main>
   );
 }

@@ -13,6 +13,7 @@
   --color-bg-tertiary: #222833;
 
   --color-accent: #6e83ff;
+  --color-accent-light: #92a0ff;
   --color-accent-hover: #89f;
 
   --color-text-primary: #141414;
@@ -21,6 +22,15 @@
   --color-danger: #ff6467;
 
   --color-border-primary: #3a4251;
+  --color-border-accent: #2443ff;
+}
+
+@utility bg-accent-gradient {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-accent-light),
+    var(--color-accent)
+  );
 }
 
 html {
@@ -47,4 +57,8 @@ h1 {
 
 h2 {
   @apply text-3xl font-[600] lg:text-5xl;
+}
+
+h3 {
+  @apply text-2xl font-[500] lg:text-4xl;
 }
