@@ -4,8 +4,8 @@ import AboutPage from "./pages/about/AboutPage";
 import HomePage from "./pages/home/HomePage";
 import ContactPage from "./pages/contact/ContactPage";
 import PrivacyPage from "./pages/privacy/PrivacyPage";
-import TermsOfServicePage from "./pages/tos/TermsOfServicePage";
-import NotFoundPage from "./pages/404/NotFoundPage";
+import TermsOfServicePage from "./pages/terms_of_service/TermsOfServicePage";
+import NotFoundPage from "./pages/page_not_found/NotFoundPage";
 import { useEffect } from "react";
 
 export default function App() {

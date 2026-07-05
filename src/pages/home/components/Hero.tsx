@@ -13,9 +13,14 @@ export default function Hero() {
         <p className="text-center text-lg text-text-secondary">
           The Form Shouldn't Be the Hardest Part of Applying.
         </p>
-        <button className="rounded-lg bg-accent px-5 py-2.5 text-xl text-white hover:bg-accent-hover">
+        <a
+          href={import.meta.env.VITE_CHROME_LISTING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-lg bg-accent px-5 py-2.5 text-xl text-white hover:bg-accent-hover"
+        >
           Try it for free
-        </button>
+        </a>
       </div>
       <div>
         <img src={hero} alt="Hero image" className="max-h-11/12" />

@@ -1,11 +1,5 @@
 # TODO
 
-## Features
-
-- [ ] Contact form submit logic / API integration
-- [ ] Hero "Try it for free" button action
-- [ ] Getting Started page
-
 ## Footer
 
 - [ ] Restore commented-out branding block in `Footer.tsx`
