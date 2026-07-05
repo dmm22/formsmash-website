@@ -31,9 +31,6 @@ export default function Navbar() {
 
   const navRef = useRef<HTMLElement>(null);
 
-  const navBaseClasses =
-    "fixed top-0 left-0 z-50 isolate w-screen p-4 xl:p-6 outline-none";
-
   function getNavBackgroundMode(navBottom: number) {
     const sections = document.querySelectorAll("[data-nav-background]");
 
@@ -140,44 +137,41 @@ export default function Navbar() {
   };
 
   return (
-    <>
-      <nav ref={navRef} className={navBaseClasses}>
-        {renderNavBackgroundElement(backgroundMode)}
+    <nav
+      ref={navRef}
+      className="fixed top-0 left-0 isolate z-50 flex h-18 w-screen items-center justify-center outline-none"
+    >
+      {renderNavBackgroundElement(backgroundMode)}
 
-        <div
-          className={`relative flex items-center justify-between ${getNavTextColor(backgroundMode)}`}
-        >
-          <button
-            onClick={handleHomeClicked}
-            className="flex items-center gap-2"
-          >
-            <img src={logo} alt="FormSmash Logo" />
-            <span className="hidden font-semibold xl:inline">FormSmash</span>
-          </button>
+      <div
+        className={`relative flex w-full items-center justify-between lg:mx-auto lg:max-w-7xl ${getNavTextColor(backgroundMode)}`}
+      >
+        <button onClick={handleHomeClicked} className="flex items-center gap-2">
+          <img src={logo} alt="FormSmash Logo" />
+          <span className="hidden font-semibold xl:inline">FormSmash</span>
+        </button>
 
-          <ul className="hidden items-center gap-10 md:flex">
-            {desktopLinks.map((link) => (
-              <li key={link.path}>
-                <NavLinkItem
-                  link={link}
-                  currentPath={location.pathname}
-                  onNavLinkClicked={handleNavLinkClicked}
-                  onHomeClicked={handleHomeClicked}
-                />
-              </li>
-            ))}
-          </ul>
+        <ul className="hidden items-center gap-10 md:flex">
+          {desktopLinks.map((link) => (
+            <li key={link.path}>
+              <NavLinkItem
+                link={link}
+                currentPath={location.pathname}
+                onNavLinkClicked={handleNavLinkClicked}
+                onHomeClicked={handleHomeClicked}
+              />
+            </li>
+          ))}
+        </ul>
 
-          <NavbarMobileMenu
-            links={navLinks}
-            backgroundMode={backgroundMode}
-            currentPath={location.pathname}
-            onNavLinkClicked={handleNavLinkClicked}
-            onHomeClicked={handleHomeClicked}
-          />
-        </div>
-      </nav>
-      <img src={logo} className="invisible p-4" />
-    </>
+        <NavbarMobileMenu
+          links={navLinks}
+          backgroundMode={backgroundMode}
+          currentPath={location.pathname}
+          onNavLinkClicked={handleNavLinkClicked}
+          onHomeClicked={handleHomeClicked}
+        />
+      </div>
+    </nav>
   );
 }
