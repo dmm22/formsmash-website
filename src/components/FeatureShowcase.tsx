@@ -15,13 +15,24 @@ export default function FeatureShowcase({
   bullets,
   isAccentBackground = false,
 }: FeatureShowcaseProps) {
+  const sectionClasses = `
+    flex
+    h-screen
+    flex-col
+    justify-evenly
+
+    p-4
+
+    ${isAccentBackground ? "bg-accent-gradient text-white" : ""}
+  `;
+
   return (
     <section
       data-nav-background={isAccentBackground ? "accent" : "image"}
-      className="flex h-screen flex-col justify-center gap-24 p-4"
+      className={sectionClasses}
     >
       {title}
-      <ul>
+      <ul className="flex list-outside list-disc flex-col gap-6 pl-6 text-xl">
         {bullets.map((bullet) => (
           <li key={bullet}>{bullet}</li>
         ))}

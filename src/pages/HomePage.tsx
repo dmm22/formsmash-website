@@ -2,21 +2,25 @@ import Hero from "../components/Hero";
 import Gif from "../components/Gif";
 import before from "../assets/before.gif";
 import after from "../assets/after.gif";
+import accuracy from "../assets/accuracy.gif";
+import autofillData from "../assets/autofill-data.gif";
+import install from "../assets/install.gif";
+
 import FeatureShowcase from "../components/FeatureShowcase";
 
 export default function HomePage() {
   const battleTestedTitle = (
-    <h2>
+    <h2 className="text-center">
       Battle Tested On <span className="text-accent">Real Applications</span>
     </h2>
   );
 
   const reviewWhatsUsedTitle = (
-    <h2>Review What FormSmash Uses To Fill Applications</h2>
+    <h2 className="text-center">Manage Your Autofill Data</h2>
   );
 
   const tryFormSmashTitle = (
-    <h2>
+    <h2 className="text-center">
       Try FormSmash in <span className="text-accent">Under a Minute</span>
     </h2>
   );
@@ -35,8 +39,8 @@ export default function HomePage() {
   ];
 
   const tryFormSmashBullets = [
-    "No account creation",
-    "No credit card",
+    "No signup required",
+    "No credit card needed",
     "No lengthy setup process",
   ];
 
@@ -46,13 +50,15 @@ export default function HomePage() {
 
       <hr className="border-b border-text-secondary xl:-mx-6" />
 
-      <section className="flex h-screen flex-col justify-evenly bg-accent-gradient p-4 text-text-primary">
+      <section className="flex h-screen flex-col justify-evenly bg-accent-gradient p-4 text-white">
         <div className="flex flex-col items-center justify-center gap-4">
           <h2 className="text-2xl font-bold">Before Formsmash</h2>
+          <p>(30 seconds)</p>
           <Gif src={before} alt="Before Formsmash" />
         </div>
         <div className="flex flex-col items-center justify-center gap-4">
           <h2 className="text-2xl font-bold">After Formsmash</h2>
+          <p>(5 seconds)</p>
           <Gif src={after} alt="After Formsmash" />
         </div>
       </section>
@@ -60,8 +66,8 @@ export default function HomePage() {
       <hr className="border-b border-text-secondary xl:-mx-6" />
 
       <FeatureShowcase
-        src={before}
-        alt="Before Formsmash"
+        src={accuracy}
+        alt="Accuracy"
         title={battleTestedTitle}
         bullets={battleTestedBullets}
       />
@@ -69,17 +75,18 @@ export default function HomePage() {
       <hr className="border-b border-text-secondary xl:-mx-6" />
 
       <FeatureShowcase
-        src={after}
-        alt="After Formsmash"
+        src={autofillData}
+        alt="Autofill Data"
         title={reviewWhatsUsedTitle}
         bullets={reviewWhatsUsedBullets}
+        isAccentBackground={true}
       />
 
       <hr className="border-b border-text-secondary xl:-mx-6" />
 
       <FeatureShowcase
-        src={before}
-        alt="Before Formsmash"
+        src={install}
+        alt="Install"
         title={tryFormSmashTitle}
         bullets={tryFormSmashBullets}
       />

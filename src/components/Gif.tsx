@@ -4,5 +4,5 @@ type GifProps = {
 };
 
 export default function Gif({ src, alt }: GifProps) {
-  return <img src={src} alt={alt} className="min-w-0" />;
+  return <img src={src} alt={alt} className="min-w-0 rounded-lg shadow-xl" />;
 }
