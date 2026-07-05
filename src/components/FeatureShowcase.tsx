@@ -21,6 +21,9 @@ export default function FeatureShowcase({
     flex-col
     justify-evenly
 
+    border-b
+    border-border-primary
+
     p-4
 
     ${isAccentBackground ? "bg-accent-gradient text-white" : ""}

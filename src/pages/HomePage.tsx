@@ -48,8 +48,6 @@ export default function HomePage() {
     <main>
       <Hero />
 
-      <hr className="border-b border-text-secondary xl:-mx-6" />
-
       <section className="flex h-screen flex-col justify-evenly bg-accent-gradient p-4 text-white">
         <div className="flex flex-col items-center justify-center gap-4">
           <h2 className="text-2xl font-bold">Before Formsmash</h2>
@@ -63,16 +61,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <hr className="border-b border-text-secondary xl:-mx-6" />
-
       <FeatureShowcase
         src={accuracy}
         alt="Accuracy"
         title={battleTestedTitle}
         bullets={battleTestedBullets}
       />
-
-      <hr className="border-b border-text-secondary xl:-mx-6" />
 
       <FeatureShowcase
         src={autofillData}
@@ -81,8 +75,6 @@ export default function HomePage() {
         bullets={reviewWhatsUsedBullets}
         isAccentBackground={true}
       />
-
-      <hr className="border-b border-text-secondary xl:-mx-6" />
 
       <FeatureShowcase
         src={install}
