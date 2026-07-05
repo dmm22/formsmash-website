@@ -37,8 +37,8 @@ export default function Hero() {
             Try it for free
           </button>
         </div>
-        <div className="h-full bg-red-200">
-          <img src={hero} alt="Hero image" className="max-h-11/12 lg:h-8/12" />
+        <div className="h-full items-center justify-center bg-red-200 lg:flex">
+          <img src={hero} alt="Hero image" className="max-h-11/12" />
         </div>
       </section>
     </div>
