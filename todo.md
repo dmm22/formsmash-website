@@ -4,7 +4,7 @@
 
 - [ ] Contact form submit logic / API integration
 - [ ] Hero "Try it for free" button action
-- [ ] Getting Started page (content stub exists at `src/content/gettingStartedContent.ts`)
+- [ ] Getting Started page
 
 ## Footer
 
@@ -32,3 +32,9 @@
 ## Tooling
 
 - [ ] Tests and CI
+
+---
+
+- get rid of && (render) and use render/getXClasses functions instead. no logic in jsx
+
+getXClasses functions define baseClasses at the top of the function

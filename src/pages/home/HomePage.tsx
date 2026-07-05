@@ -4,29 +4,8 @@ import autofillData from "./assets/autofill-data.gif";
 import install from "./assets/install.gif";
 import FeatureShowcase from "./components/FeatureShowcase";
 import WithOrWithoutSection from "./components/WithOrWithoutSection";
-import {
-  battleTestedBullets,
-  reviewWhatsUsedBullets,
-  tryFormSmashBullets,
-} from "../../content/homeContent";
 
 export default function HomePage() {
-  const battleTestedTitle = (
-    <h2 className="text-center">
-      Battle Tested On <span className="text-accent">Real Applications</span>
-    </h2>
-  );
-
-  const reviewWhatsUsedTitle = (
-    <h2 className="text-center">Manage Your Autofill Data</h2>
-  );
-
-  const tryFormSmashTitle = (
-    <h2 className="text-center">
-      Try FormSmash in <span className="text-accent">Under a Minute</span>
-    </h2>
-  );
-
   return (
     <main>
       <Hero />
@@ -36,23 +15,41 @@ export default function HomePage() {
       <FeatureShowcase
         src={accuracy}
         alt="Accuracy"
-        title={battleTestedTitle}
-        bullets={battleTestedBullets}
+        title={
+          <h2 className="text-center">
+            Battle Tested On{" "}
+            <span className="text-accent">Real Applications</span>
+          </h2>
+        }
+        bullets={[
+          "Works on LinkedIn, Indeed, Greenhouse Jobs, Workday, and company career sites",
+          "Continuously improved through real-world use",
+          "Built to handle dropdowns, checkboxes, radio buttons, and more",
+        ]}
       />
 
       <FeatureShowcase
         src={autofillData}
         alt="Autofill Data"
-        title={reviewWhatsUsedTitle}
-        bullets={reviewWhatsUsedBullets}
+        title={<h2 className="text-center">Manage Your Autofill Data</h2>}
+        bullets={[
+          "Review and edit extracted information before using it",
+          "Add answers that aren't included in your resume",
+          "Save common responses once instead of typing them repeatedly",
+          "Use the same autofill data across future applications",
+        ]}
         isAccentBackground={true}
       />
 
       <FeatureShowcase
         src={install}
         alt="Install"
-        title={tryFormSmashTitle}
-        bullets={tryFormSmashBullets}
+        title={<h2 className="text-center">Try Form Smash Today</h2>}
+        bullets={[
+          "No signup required",
+          "No credit card needed",
+          "No lengthy setup process",
+        ]}
       />
     </main>
   );
