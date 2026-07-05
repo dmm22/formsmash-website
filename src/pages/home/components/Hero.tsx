@@ -15,16 +15,33 @@ export default function Hero() {
     openExternalUrl(import.meta.env.VITE_CHROME_LISTING_URL);
   };
 
+  const heroSectionClasses = `
+    bg-red-100
+
+    relative
+
+    h-full
+
+    grid
+    grid-rows-[1fr_1fr]
+    place-items-center
+
+    px-4
+    py-18
+
+    lg:flex
+    lg:gap-8
+
+    lg:p-0
+  `;
+
   return (
-    <div className="h-screen grid-rows-[36_1fr] lg:grid">
-      <div className="w-full bg-purple-400" />
-      <section
-        data-nav-background="image"
-        className="relative flex h-full grid-cols-2 flex-col items-center justify-center gap-8 bg-green-100 lg:grid"
-      >
+    <div className="h-screen lg:flex lg:flex-col">
+      <div className="z-50 w-full lg:min-h-18" />
+      <section data-nav-background="image" className={heroSectionClasses}>
         <ScrollViewAnchor ref={scrollObserverRef} />
-        <div className="mb-6 flex flex-col items-center justify-center gap-2">
-          <h1 className="text-center">
+        <div className="mb-6 flex flex-col items-center justify-center gap-2 lg:flex-1 lg:items-start lg:gap-4">
+          <h1 className="text-center lg:text-left">
             Never Type Your Resume Into Another Job Application Again
           </h1>
           <p className="text-center text-lg text-text-secondary">
@@ -32,13 +49,17 @@ export default function Hero() {
           </p>
           <button
             onClick={handleCtaButtonClicked}
-            className="rounded-lg bg-accent px-5 py-2.5 text-xl text-white hover:bg-accent-hover"
+            className="rounded-lg bg-orange-500 px-5 py-2.5 text-xl text-white hover:bg-orange-600"
           >
             Try it for free
           </button>
         </div>
-        <div className="h-full items-center justify-center bg-red-200 lg:flex">
-          <img src={hero} alt="Hero image" className="max-h-11/12" />
+        <div className="items-center justify-center lg:flex lg:h-full lg:flex-1 lg:justify-end">
+          <img
+            src={hero}
+            alt="Hero image"
+            className="max-h-[40dvh] lg:max-h-full"
+          />
         </div>
       </section>
     </div>
