@@ -1,9 +1,10 @@
+import type { ReactNode } from "react";
 import background from "../assets/background.png";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 type LayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export default function Layout({ children }: LayoutProps) {

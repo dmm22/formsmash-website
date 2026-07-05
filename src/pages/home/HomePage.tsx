@@ -1,12 +1,14 @@
 import Hero from "./components/Hero";
-import Gif from "../../components/Gif";
-import before from "./assets/before.gif";
-import after from "./assets/after.gif";
 import accuracy from "./assets/accuracy.gif";
 import autofillData from "./assets/autofill-data.gif";
 import install from "./assets/install.gif";
-
 import FeatureShowcase from "./components/FeatureShowcase";
+import WithOrWithoutSection from "./components/WithOrWithoutSection";
+import {
+  battleTestedBullets,
+  reviewWhatsUsedBullets,
+  tryFormSmashBullets,
+} from "../../content/homeContent";
 
 export default function HomePage() {
   const battleTestedTitle = (
@@ -25,41 +27,11 @@ export default function HomePage() {
     </h2>
   );
 
-  const battleTestedBullets = [
-    "Works on LinkedIn, Indeed, Greenhouse Jobs, Workday, and company career sites",
-    "Continuously improved through real-world use",
-    "Built to handle dropdowns, checkboxes, radio buttons, and more",
-  ];
-
-  const reviewWhatsUsedBullets = [
-    "Review and edit extracted information before using it",
-    "Add answers that aren't included in your resume",
-    "Save common responses once instead of typing them repeatedly",
-    "Use the same autofill data across future applications",
-  ];
-
-  const tryFormSmashBullets = [
-    "No signup required",
-    "No credit card needed",
-    "No lengthy setup process",
-  ];
-
   return (
     <main>
       <Hero />
 
-      <section className="flex h-screen flex-col justify-evenly bg-accent-gradient p-4 text-white">
-        <div className="flex flex-col items-center justify-center gap-4">
-          <h2 className="text-2xl font-bold">Before Formsmash</h2>
-          <p>(30 seconds)</p>
-          <Gif src={before} alt="Before Formsmash" />
-        </div>
-        <div className="flex flex-col items-center justify-center gap-4">
-          <h2 className="text-2xl font-bold">After Formsmash</h2>
-          <p>(5 seconds)</p>
-          <Gif src={after} alt="After Formsmash" />
-        </div>
-      </section>
+      <WithOrWithoutSection />
 
       <FeatureShowcase
         src={accuracy}

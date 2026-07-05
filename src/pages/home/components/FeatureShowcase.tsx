@@ -1,9 +1,10 @@
+import type { ReactNode } from "react";
 import Gif from "../../../components/Gif";
 
 type FeatureShowcaseProps = {
   src: string;
   alt: string;
-  title: React.ReactNode;
+  title: ReactNode;
   bullets: string[];
   isAccentBackground?: boolean;
 };

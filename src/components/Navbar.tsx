@@ -3,12 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { IoMdMenu } from "react-icons/io";
 import background from "../assets/background.png";
 import logo from "../assets/logo.png";
-
-type NavLinkItem = {
-  label: string;
-  to: string;
-  mobileOnly?: boolean;
-};
+import { navLinks, type AppRoute } from "../routes";
 
 type NavBackgroundMode = "image" | "accent";
 
@@ -24,16 +19,10 @@ export default function Navbar() {
   const menuRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLUListElement>(null);
 
-  const navLinks: NavLinkItem[] = [
-    { label: "Home", to: "/", mobileOnly: true },
-    { label: "About", to: "/about" },
-    { label: "Contact", to: "/contact" },
-  ];
-
   const navBaseClasses =
     "fixed top-0 left-0 z-50 isolate w-screen p-4 xl:p-6 outline-none";
 
-  const mobileContextManuBaseClasses = `
+  const mobileContextMenuBaseClasses = `
     fixed 
     top-0 
     right-0 
@@ -179,6 +168,22 @@ export default function Navbar() {
     return "text-text-primary";
   }
 
+  function resolveMenuButtonLabel(menuOpen: boolean) {
+    if (menuOpen) {
+      return "Close menu";
+    }
+
+    return "Open menu";
+  }
+
+  function resolveAriaCurrent(path: string) {
+    if (location.pathname !== path) {
+      return undefined;
+    }
+
+    return "page" as const;
+  }
+
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
@@ -199,6 +204,31 @@ export default function Navbar() {
     }
 
     openMenu();
+  };
+
+  const handlePanelKeyDown = (event: React.KeyboardEvent<HTMLUListElement>) => {
+    if (event.key !== "Tab" || !panelRef.current) {
+      return;
+    }
+
+    const focusableItems = panelRef.current.querySelectorAll("a");
+    const firstItem = focusableItems[0];
+    const lastItem = focusableItems[focusableItems.length - 1];
+
+    if (!firstItem || !lastItem) {
+      return;
+    }
+
+    if (!event.shiftKey && document.activeElement === lastItem) {
+      event.preventDefault();
+      firstItem.focus();
+      return;
+    }
+
+    if (event.shiftKey && document.activeElement === firstItem) {
+      event.preventDefault();
+      lastItem.focus();
+    }
   };
 
   useEffect(() => {
@@ -263,6 +293,44 @@ export default function Navbar() {
     return () => cancelAnimationFrame(frame);
   }, [menuMounted]);
 
+  useEffect(() => {
+    if (!menuOpen) {
+      return;
+    }
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") {
+        return;
+      }
+
+      closeMenu();
+    };
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen || !panelRef.current) {
+      return;
+    }
+
+    const frame = requestAnimationFrame(() => {
+      const firstLink = panelRef.current?.querySelector("a");
+
+      if (!firstLink) {
+        return;
+      }
+
+      firstLink.focus();
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [menuOpen]);
+
   const handlePanelTransitionEnd = (
     event: React.TransitionEvent<HTMLUListElement>,
   ) => {
@@ -282,6 +350,19 @@ export default function Navbar() {
   const desktopLinks = navLinks.filter((link) => !link.mobileOnly);
   const mobileLinks = navLinks;
 
+  function renderNavLink(link: AppRoute, onNavigate?: () => void) {
+    return (
+      <Link
+        to={link.path}
+        onClick={onNavigate}
+        aria-current={resolveAriaCurrent(link.path)}
+        className="transition-colors hover:text-accent"
+      >
+        {link.label}
+      </Link>
+    );
+  }
+
   return (
     <>
       <nav ref={navRef} className={navBaseClasses}>
@@ -291,20 +372,13 @@ export default function Navbar() {
           className={`relative flex items-center justify-between ${getNavTextColor(backgroundMode)}`}
         >
           <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="Formsmash Logo" />
+            <img src={logo} alt="FormSmash Logo" />
             <span className="hidden font-semibold xl:inline">FormSmash</span>
           </Link>
 
           <ul className="hidden items-center gap-10 md:flex">
             {desktopLinks.map((link) => (
-              <li key={link.to}>
-                <Link
-                  to={link.to}
-                  className="transition-colors hover:text-accent"
-                >
-                  {link.label}
-                </Link>
-              </li>
+              <li key={link.path}>{renderNavLink(link)}</li>
             ))}
           </ul>
 
@@ -314,6 +388,7 @@ export default function Navbar() {
               className="relative z-10 outline-none"
               onClick={toggleMenu}
               aria-expanded={menuOpen}
+              aria-label={resolveMenuButtonLabel(menuOpen)}
             >
               <IoMdMenu
                 className={resolveMenuIconClass(menuOpen, backgroundMode)}
@@ -324,18 +399,13 @@ export default function Navbar() {
             {menuMounted && (
               <ul
                 ref={panelRef}
+                onKeyDown={handlePanelKeyDown}
                 onTransitionEnd={handlePanelTransitionEnd}
-                className={`${mobileContextManuBaseClasses} ${resolveMobilePanelTransform(menuOpen)}`}
+                className={`${mobileContextMenuBaseClasses} ${resolveMobilePanelTransform(menuOpen)}`}
               >
                 {mobileLinks.map((link) => (
-                  <li key={link.to}>
-                    <Link
-                      to={link.to}
-                      onClick={closeMenu}
-                      className="transition-colors hover:text-accent-hover"
-                    >
-                      {link.label}
-                    </Link>
+                  <li key={link.path}>
+                    {renderNavLink(link, closeMenu)}
                   </li>
                 ))}
               </ul>

@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+import { routes } from "../routes";
+
 export default function Footer() {
   return (
-    <footer className="my-8 flex flex-col gap-4 p-4">
+    <footer className="mb-8 flex flex-col gap-4 p-4">
       {/* <div className="mb-8 flex flex-col gap-1">
         <div className="flex items-center gap-2">
           <img src={logo} alt="FormSmash" className="w-8" />
@@ -27,13 +30,13 @@ export default function Footer() {
           <strong className="underline">Support</strong>
           <ul>
             <li className="text-text-secondary">
-              <a href="#">Contact</a>
+              <Link to={routes.contact.path}>Contact</Link>
             </li>
             <li className="text-text-secondary">
-              <a href="#">Privacy Policy</a>
+              <Link to={routes.privacy.path}>Privacy Policy</Link>
             </li>
             <li className="text-text-secondary">
-              <a href="#">Terms of Service</a>
+              <Link to={routes.terms.path}>Terms of Service</Link>
             </li>
           </ul>
         </div>
@@ -41,7 +44,7 @@ export default function Footer() {
           <strong className="underline">About</strong>
           <ul>
             <li className="text-text-secondary">
-              <a href="#">About FormSmash</a>
+              <Link to={routes.about.path}>About FormSmash</Link>
             </li>
           </ul>
         </div>

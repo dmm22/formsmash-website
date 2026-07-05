@@ -13,7 +13,7 @@ export default function Hero() {
         <p className="text-center text-lg text-text-secondary">
           The Form Shouldn't Be the Hardest Part of Applying.
         </p>
-        <button className="rounded-lg bg-orange-500 px-5 py-2.5 text-xl text-white hover:bg-orange-600">
+        <button className="rounded-lg bg-accent px-5 py-2.5 text-xl text-white hover:bg-accent-hover">
           Try it for free
         </button>
       </div>

@@ -8,9 +8,6 @@
 @theme {
   --font-sans: "Inter", system-ui, sans-serif;
 
-  --color-bg-primary: #111317;
-  --color-bg-secondary: #171a20;
-  --color-bg-tertiary: #222833;
   --color-bg-accent-light: #dedffe;
 
   --color-accent: #6e83ff;
@@ -19,8 +16,6 @@
 
   --color-text-primary: #141414;
   --color-text-secondary: #696969;
-
-  --color-danger: #ff6467;
 
   --color-border-primary: #acb4c3;
   --color-border-accent: #2443ff;

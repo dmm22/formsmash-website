@@ -1,11 +1,21 @@
-import axios from "axios";
+import axios, { type AxiosInstance } from "axios";
 
-const baseURL = import.meta.env.VITE_API_BASE_URL;
+let apiInstance: AxiosInstance | null = null;
 
-if (!baseURL) {
-  throw new Error("VITE_API_BASE_URL is not defined");
+export function getApi(): AxiosInstance {
+  if (apiInstance) {
+    return apiInstance;
+  }
+
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+
+  if (!baseURL) {
+    throw new Error("VITE_API_BASE_URL is not defined");
+  }
+
+  apiInstance = axios.create({
+    baseURL,
+  });
+
+  return apiInstance;
 }
-
-export const api = axios.create({
-  baseURL,
-});

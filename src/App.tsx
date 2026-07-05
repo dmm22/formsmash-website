@@ -3,6 +3,8 @@ import Layout from "./components/Layout";
 import AboutPage from "./pages/about/AboutPage";
 import HomePage from "./pages/home/HomePage";
 import ContactPage from "./pages/contact/ContactPage";
+import PrivacyPage from "./pages/privacy/PrivacyPage";
+import NotFoundPage from "./pages/404/NotFoundPage";
 import { useEffect } from "react";
 
 export default function App() {
@@ -17,6 +19,8 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>
   );
