@@ -15,6 +15,7 @@ export default function HomePage() {
       <FeatureShowcase
         src={accuracy}
         alt="Accuracy"
+        scrollEventName="battle_tested_section_viewed"
         title={
           <h2 className="text-center">
             Battle Tested On{" "}
@@ -39,6 +40,7 @@ export default function HomePage() {
           "Use the same autofill data across future applications",
         ]}
         isAccentBackground={true}
+        scrollEventName="manage_autofill_data_section_viewed"
       />
 
       <FeatureShowcase
@@ -50,6 +52,7 @@ export default function HomePage() {
           "No credit card needed",
           "No lengthy setup process",
         ]}
+        scrollEventName="try_it_out_section_viewed"
       />
     </main>
   );

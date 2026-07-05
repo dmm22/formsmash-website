@@ -7,12 +7,16 @@ import PrivacyPage from "./pages/privacy/PrivacyPage";
 import TermsOfServicePage from "./pages/terms_of_service/TermsOfServicePage";
 import NotFoundPage from "./pages/page_not_found/NotFoundPage";
 import { useEffect } from "react";
+import useAnalyticsEvents from "./hooks/useAnalyticsEvents";
 
 export default function App() {
   const { pathname } = useLocation();
+  const { sendEvent } = useAnalyticsEvents();
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+    sendEvent("page_visit");
+  }, [pathname, sendEvent]);
 
   return (
     <Layout>

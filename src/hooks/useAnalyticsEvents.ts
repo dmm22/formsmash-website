@@ -2,17 +2,24 @@ import { useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { postAnalyticsEvent } from "../services/analyticsService";
 
+export type ShowcaseEventName =
+  | "with_or_without_section_viewed"
+  | "manage_autofill_data_section_viewed"
+  | "try_it_out_section_viewed"
+  | "battle_tested_section_viewed";
+
 export type AnalyticsEventName =
   | "page_visit"
   | "nav_link_clicked"
   | "footer_link_clicked"
-  | "home_section_viewed"
+  | "hero_viewed"
   | "cta_button_clicked"
   | "custom_gpt_button_clicked"
   | "contact_email_input_changed"
   | "contact_message_input_changed"
   | "contact_form_submitted"
-  | "footer_scrolled_into_view";
+  | "footer_scrolled_into_view"
+  | ShowcaseEventName;
 
 export type AnalyticsEventPath =
   "/" | "/about" | "/contact" | "/privacy" | "/terms" | "/success";

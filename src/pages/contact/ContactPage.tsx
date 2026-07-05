@@ -1,9 +1,11 @@
 import SecondaryPageShell from "../../components/SecondaryPageShell";
+import useAnalyticsEvents from "../../hooks/useAnalyticsEvents";
 import send from "./assets/send.png";
 import openaiLogo from "./assets/openai_logo.png";
 import useContactForm from "./hooks/useContactForm";
 
 export default function ContactPage() {
+  const { sendEvent } = useAnalyticsEvents();
   const {
     email,
     setEmail,
@@ -12,8 +14,19 @@ export default function ContactPage() {
     statusMessage,
     isSubmitting,
     statusMessageClassName,
+    handleEmailBlur,
+    handleMessageBlur,
     handleSubmit,
   } = useContactForm();
+
+  const handleCustomGptButtonClicked = () => {
+    sendEvent("custom_gpt_button_clicked");
+    window.open(
+      import.meta.env.VITE_CUSTOM_GPT_URL,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
 
   return (
     <SecondaryPageShell src={send} alt="Send" title="Contact FormSmash">
@@ -30,6 +43,7 @@ export default function ContactPage() {
             disabled={isSubmitting}
             value={email}
             onChange={(event) => setEmail(event.target.value)}
+            onBlur={handleEmailBlur}
             className="rounded-lg border border-border-primary p-3"
           />
         </div>
@@ -44,6 +58,7 @@ export default function ContactPage() {
             disabled={isSubmitting}
             value={message}
             onChange={(event) => setMessage(event.target.value)}
+            onBlur={handleMessageBlur}
             className="h-64 rounded-lg border border-border-primary p-3"
           />
         </div>
@@ -71,15 +86,14 @@ export default function ContactPage() {
           If you still need help, run into a bug, or just prefer to reach out
           directly, send me a message and I'll take a look as soon as I can.
         </p>
-        <a
-          href={import.meta.env.VITE_CUSTOM_GPT_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
+          onClick={handleCustomGptButtonClicked}
           className="flex items-center justify-center gap-2 rounded-lg border border-border-accent bg-bg-accent-light p-2"
         >
           <img src={openaiLogo} alt="OpenAI" className="max-w-8" />
           <span>FormSmash Assistant</span>
-        </a>
+        </button>
       </section>
     </SecondaryPageShell>
   );

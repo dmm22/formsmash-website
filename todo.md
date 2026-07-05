@@ -32,3 +32,8 @@
 - get rid of && (render) and use render/getXClasses functions instead. no logic in jsx
 
 getXClasses functions define baseClasses at the top of the function
+
+- alphabetize
+- react query
+- desktop css
+- check if rest endpoint is best for analytics

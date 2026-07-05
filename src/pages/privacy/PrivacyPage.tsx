@@ -78,10 +78,12 @@ export default function PrivacyPage() {
             Preferences.
           </li>
           <li>
-            <strong className="text-text-primary">Usage and limits data.</strong>{" "}
+            <strong className="text-text-primary">
+              Usage and limits data.
+            </strong>{" "}
             We assign a browser-specific client identifier and may record
-            operation counts, token usage per AI request, timestamps, and your IP
-            address for rate limiting, abuse prevention, and billing limits.
+            operation counts, token usage per AI request, timestamps, and your
+            IP address for rate limiting, abuse prevention, and billing limits.
             Some usage may be recorded before you sign in and linked to your
             account after you sign in.
           </li>
@@ -113,9 +115,9 @@ export default function PrivacyPage() {
             example, links to the Chrome Web Store, support resources, or the
             contact form), random visitor and session identifiers stored in your
             browser, the referring page URL when available, browser type, and
-            related request metadata (including IP address for abuse prevention).
-            See the &quot;Marketing website analytics&quot; section below for
-            more detail.
+            related request metadata (including IP address for abuse
+            prevention). See the &quot;Marketing website analytics&quot; section
+            below for more detail.
           </li>
         </ul>
       </PolicySection>
@@ -137,9 +139,7 @@ export default function PrivacyPage() {
       </PolicySection>
 
       <PolicySection heading="How we use information">
-        <p className={paragraphClassName}>
-          We use the information above to:
-        </p>
+        <p className={paragraphClassName}>We use the information above to:</p>
         <ul className={listClassName}>
           <li>
             Provide autofill, document storage, AI gap-fill, and document field
@@ -168,9 +168,9 @@ export default function PrivacyPage() {
         <ul className={listClassName}>
           <li>
             <strong className="text-text-primary">AI providers.</strong> We send
-            relevant user content (document text, autofill field data, form field
-            labels, and Autofill Preferences) to third-party AI services (such
-            as OpenAI and Google) to provide gap-fill and document field
+            relevant user content (document text, autofill field data, form
+            field labels, and Autofill Preferences) to third-party AI services
+            (such as OpenAI and Google) to provide gap-fill and document field
             extraction. Those providers process data under their own terms and
             privacy policies. We cannot control third-party practices.
           </li>
@@ -219,12 +219,12 @@ export default function PrivacyPage() {
           When you visit our public marketing website, we use first-party
           analytics to understand how visitors use the site. This may include
           the pages you view, button or link clicks (such as links to the Chrome
-          Web Store, the FormSmash Assistant, Getting Started, or the contact
-          form), a random visitor identifier stored in your browser&apos;s local
-          storage, a session identifier stored for that browser session, the
-          referring page URL when your browser provides it, browser type,
-          timestamps, and related request metadata (including IP address for
-          rate limiting and abuse prevention).
+          Web Store, the FormSmash Assistant, or the contact form), a random
+          visitor identifier stored in your browser&apos;s local storage, a
+          session identifier stored for that browser session, the referring page
+          URL when your browser provides it, browser type, timestamps, and
+          related request metadata (including IP address for rate limiting and
+          abuse prevention).
         </p>
         <p className={paragraphClassName}>
           We use marketing website analytics only to measure traffic, understand

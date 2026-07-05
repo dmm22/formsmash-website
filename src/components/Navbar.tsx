@@ -1,14 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoMdMenu } from "react-icons/io";
 import background from "../assets/background.png";
 import logo from "../assets/logo.png";
 import { navLinks, type AppRoute } from "../routes";
+import useAnalyticsEvents from "../hooks/useAnalyticsEvents";
 
 type NavBackgroundMode = "image" | "accent";
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { sendEvent } = useAnalyticsEvents();
 
   const [menuOpen, setIsMenuOpen] = useState(false);
   const [menuMounted, setMenuMounted] = useState(false);
@@ -350,11 +353,53 @@ export default function Navbar() {
   const desktopLinks = navLinks.filter((link) => !link.mobileOnly);
   const mobileLinks = navLinks;
 
+  const handleHomeClicked = () => {
+    navigate("/");
+    window.scrollTo(0, 0);
+  };
+
+  const handleNavLinkClicked = (link: AppRoute) => {
+    sendEvent("nav_link_clicked", { label: link.label, path: link.path });
+  };
+
   function renderNavLink(link: AppRoute, onNavigate?: () => void) {
+    if (link.path === "/") {
+      const handleClick = () => {
+        handleNavLinkClicked(link);
+        handleHomeClicked();
+
+        if (!onNavigate) {
+          return;
+        }
+
+        onNavigate();
+      };
+
+      return (
+        <button
+          type="button"
+          onClick={handleClick}
+          className="transition-colors hover:text-accent"
+        >
+          {link.label}
+        </button>
+      );
+    }
+
+    const handleClick = () => {
+      handleNavLinkClicked(link);
+
+      if (!onNavigate) {
+        return;
+      }
+
+      onNavigate();
+    };
+
     return (
       <Link
         to={link.path}
-        onClick={onNavigate}
+        onClick={handleClick}
         aria-current={resolveAriaCurrent(link.path)}
         className="transition-colors hover:text-accent"
       >
@@ -371,10 +416,14 @@ export default function Navbar() {
         <div
           className={`relative flex items-center justify-between ${getNavTextColor(backgroundMode)}`}
         >
-          <Link to="/" className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={handleHomeClicked}
+            className="flex items-center gap-2"
+          >
             <img src={logo} alt="FormSmash Logo" />
             <span className="hidden font-semibold xl:inline">FormSmash</span>
-          </Link>
+          </button>
 
           <ul className="hidden items-center gap-10 md:flex">
             {desktopLinks.map((link) => (
@@ -404,9 +453,7 @@ export default function Navbar() {
                 className={`${mobileContextMenuBaseClasses} ${resolveMobilePanelTransform(menuOpen)}`}
               >
                 {mobileLinks.map((link) => (
-                  <li key={link.path}>
-                    {renderNavLink(link, closeMenu)}
-                  </li>
+                  <li key={link.path}>{renderNavLink(link, closeMenu)}</li>
                 ))}
               </ul>
             )}

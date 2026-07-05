@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, type SubmitEvent } from "react";
+import useAnalyticsEvents from "../../../hooks/useAnalyticsEvents";
 import { prepareContactPayload } from "../contactForm";
 import { postContactMessage } from "../../../services/contactService";
 
@@ -10,6 +11,7 @@ const useContactForm = () => {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const { sendEvent } = useAnalyticsEvents();
 
   const isSubmitting = status === "submitting";
 
@@ -29,6 +31,14 @@ const useContactForm = () => {
     return "text-text-primary";
   };
 
+  const handleEmailBlur = () => {
+    sendEvent("contact_email_input_changed", { value: email });
+  };
+
+  const handleMessageBlur = () => {
+    sendEvent("contact_message_input_changed", { value: message });
+  };
+
   const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus("submitting");
@@ -46,6 +56,8 @@ const useContactForm = () => {
     try {
       await postContactMessage(prepared.payload);
 
+      sendEvent("contact_form_submitted");
+
       setEmail("");
       setMessage("");
       setStatus("success");
@@ -55,9 +67,11 @@ const useContactForm = () => {
         console.error("contact submit failed", error);
       }
 
-      const httpStatus = axios.isAxiosError(error)
-        ? error.response?.status
-        : undefined;
+      let httpStatus: number | undefined;
+
+      if (axios.isAxiosError(error)) {
+        httpStatus = error.response?.status;
+      }
 
       setStatus("error");
       setStatusMessage(resolveContactErrorMessage(httpStatus));
@@ -72,6 +86,8 @@ const useContactForm = () => {
     statusMessage,
     isSubmitting,
     statusMessageClassName: resolveStatusMessageClassName(),
+    handleEmailBlur,
+    handleMessageBlur,
     handleSubmit,
   };
 };
