@@ -14,12 +14,12 @@ export default function Layout({ children }: LayoutProps) {
         style={{ backgroundColor: "white" }}
       >
         <div
-          className="h-full w-full bg-cover bg-center bg-no-repeat opacity-90"
+          className="h-full w-full scale-[-1] bg-cover bg-center bg-no-repeat opacity-90"
           style={{ backgroundImage: `url(${background})` }}
         />
       </div>
       <Navbar />
-      <div className="p-4 xl:p-6">{children}</div>
+      {children}
     </>
   );
 }

@@ -1,15 +1,8 @@
 type GifProps = {
   src: string;
   alt: string;
-  className?: string;
 };
 
-export default function Gif({ src, alt, className = "" }: GifProps) {
-  return (
-    <img
-      className={`h-auto max-w-full rounded-lg shadow-xl ${className}`}
-      src={src}
-      alt={alt}
-    />
-  );
+export default function Gif({ src, alt }: GifProps) {
+  return <img src={src} alt={alt} className="min-w-0" />;
 }

@@ -10,12 +10,11 @@ export default function WithOrWithoutSection() {
     justify-center 
     items-center 
 
-    h-screen
+    
 
     xl:grid 
     xl:grid-cols-[1fr_1fr] 
     xl:justify-items-center 
-    xl:h-screen
 
     bg-accent-gradient
 

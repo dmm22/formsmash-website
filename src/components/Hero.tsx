@@ -1,37 +1,25 @@
-import fillFormGif from "../assets/fill-form.gif";
-import Gif from "./Gif";
+import hero from "../assets/hero.png";
 
 export default function Hero() {
-  const heroClasses = `
-    h-screen
-
-    flex
-    flex-col
-    items-center
-    justify-center
-    gap-18
-
-    xl:h-screen
-    xl:flex-row
-    xl:justify-items-center
-    xl:p-6
-  `;
-
   return (
-    <section data-nav-background="image" className={heroClasses}>
-      <div className="flex flex-col items-center gap-4 xl:items-start">
-        <h1 className="text-center xl:text-left">
+    <section
+      data-nav-background="image"
+      className="flex h-screen flex-col items-center justify-center gap-8 p-4"
+    >
+      <div className="mb-6 flex flex-col items-center justify-center gap-2">
+        <h1 className="text-center">
           Never Type Your Resume Into Another Job Application Again
         </h1>
-
-        <p className="text-center text-lg text-text-secondary xl:text-left">
+        <p className="text-center text-lg text-text-secondary">
           The Form Shouldn't Be the Hardest Part of Applying.
         </p>
-        <button className="w-1/2 rounded-lg bg-orange-500 px-5 py-2.5 text-xl text-white hover:bg-orange-600 xl:w-max">
+        <button className="rounded-lg bg-orange-500 px-5 py-2.5 text-xl text-white hover:bg-orange-600">
           Try it for free
         </button>
       </div>
-      <Gif src={fillFormGif} alt="Fill form gif" />
+      <div>
+        <img src={hero} alt="Hero image" className="max-h-11/12" />
+      </div>
     </section>
   );
 }

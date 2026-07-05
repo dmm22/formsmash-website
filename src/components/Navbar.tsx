@@ -12,161 +12,6 @@ type NavLinkItem = {
 
 type NavBackgroundMode = "image" | "accent";
 
-const navLinks: NavLinkItem[] = [
-  { label: "Home", to: "/", mobileOnly: true },
-  { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
-];
-
-const navBaseClasses =
-  "fixed top-0 left-0 z-50 isolate w-screen p-4 xl:p-6 outline-none";
-
-const mobileContextManuBaseClasses = `
-  fixed 
-  top-0 
-  right-0 
-
-  flex
-
-  h-96 
-  w-screen 
-
-  flex-col 
-  items-center 
-  justify-center 
-  gap-14 
-
-  bg-accent-gradient 
-
-  p-4 
-
-  text-2xl 
-  text-white 
-
-  shadow-xl 
-
-  transition-transform 
-  duration-300 
-  ease-in-out
-`;
-
-function resolveMobilePanelTransform(menuOpen: boolean) {
-  if (menuOpen) {
-    return "translate-y-0";
-  }
-
-  return "-translate-y-full";
-}
-
-function shouldDismissMenuOnOutsideClick(
-  menuRoot: HTMLDivElement | null,
-  target: Node,
-  menuOpen: boolean,
-) {
-  if (!menuRoot || !menuOpen) {
-    return false;
-  }
-
-  if (menuRoot.contains(target)) {
-    return false;
-  }
-
-  return true;
-}
-
-function shouldUnmountMobilePanel(
-  e: React.TransitionEvent<HTMLUListElement>,
-  panel: HTMLUListElement | null,
-  menuOpen: boolean,
-) {
-  if (e.target !== panel || e.propertyName !== "transform" || menuOpen) {
-    return false;
-  }
-
-  return true;
-}
-
-function getNavBackgroundMode(navBottom: number) {
-  const sections = document.querySelectorAll("[data-nav-background]");
-
-  let activeMode: NavBackgroundMode = "image";
-
-  sections.forEach((section) => {
-    const sectionRect = section.getBoundingClientRect();
-
-    if (sectionRect.top > navBottom) {
-      return;
-    }
-
-    if (sectionRect.bottom <= navBottom) {
-      return;
-    }
-
-    const sectionMode = section.getAttribute("data-nav-background");
-
-    if (sectionMode === "accent") {
-      activeMode = "accent";
-      return;
-    }
-
-    if (sectionMode === "image") {
-      activeMode = "image";
-    }
-  });
-
-  return activeMode;
-}
-
-function getNavTextColor(mode: NavBackgroundMode) {
-  if (mode === "accent") {
-    return "text-white";
-  }
-
-  return "text-text-primary";
-}
-
-function renderNavBackgroundElement(mode: NavBackgroundMode) {
-  if (mode === "accent") {
-    return (
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-accent-gradient transition-colors duration-300"
-      />
-    );
-  }
-
-  return (
-    <div
-      aria-hidden
-      className="absolute inset-0 overflow-hidden transition-colors duration-300"
-      style={{ backgroundColor: "white" }}
-    >
-      <div
-        className="pointer-events-none absolute top-0 left-0 w-screen bg-cover bg-center bg-no-repeat opacity-90"
-        style={{
-          backgroundImage: `url(${background})`,
-          height: "100vh",
-        }}
-      />
-    </div>
-  );
-}
-
-function resolveMenuIconClass(
-  menuOpen: boolean,
-  navBackgroundMode: NavBackgroundMode,
-) {
-  if (menuOpen) {
-    return "text-white";
-  }
-
-  if (navBackgroundMode === "accent") {
-    return "text-white";
-  }
-
-  return "text-text-primary";
-}
-
 export default function Navbar() {
   const location = useLocation();
 
@@ -178,6 +23,161 @@ export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLUListElement>(null);
+
+  const navLinks: NavLinkItem[] = [
+    { label: "Home", to: "/", mobileOnly: true },
+    { label: "About", to: "/about" },
+    { label: "Contact", to: "/contact" },
+  ];
+
+  const navBaseClasses =
+    "fixed top-0 left-0 z-50 isolate w-screen p-4 xl:p-6 outline-none";
+
+  const mobileContextManuBaseClasses = `
+    fixed 
+    top-0 
+    right-0 
+  
+    flex
+  
+    h-96 
+    w-screen 
+  
+    flex-col 
+    items-center 
+    justify-center 
+    gap-14 
+  
+    bg-accent-gradient 
+  
+    p-4 
+  
+    text-2xl 
+    text-white 
+  
+    shadow-xl 
+  
+    transition-transform 
+    duration-300 
+    ease-in-out
+  `;
+
+  function resolveMobilePanelTransform(menuOpen: boolean) {
+    if (menuOpen) {
+      return "translate-y-0";
+    }
+
+    return "-translate-y-full";
+  }
+
+  function shouldDismissMenuOnOutsideClick(
+    menuRoot: HTMLDivElement | null,
+    target: Node,
+    menuOpen: boolean,
+  ) {
+    if (!menuRoot || !menuOpen) {
+      return false;
+    }
+
+    if (menuRoot.contains(target)) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function shouldUnmountMobilePanel(
+    e: React.TransitionEvent<HTMLUListElement>,
+    panel: HTMLUListElement | null,
+    menuOpen: boolean,
+  ) {
+    if (e.target !== panel || e.propertyName !== "transform" || menuOpen) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function getNavBackgroundMode(navBottom: number) {
+    const sections = document.querySelectorAll("[data-nav-background]");
+
+    let activeMode: NavBackgroundMode = "image";
+
+    sections.forEach((section) => {
+      const sectionRect = section.getBoundingClientRect();
+
+      if (sectionRect.top > navBottom) {
+        return;
+      }
+
+      if (sectionRect.bottom <= navBottom) {
+        return;
+      }
+
+      const sectionMode = section.getAttribute("data-nav-background");
+
+      if (sectionMode === "accent") {
+        activeMode = "accent";
+        return;
+      }
+
+      if (sectionMode === "image") {
+        activeMode = "image";
+      }
+    });
+
+    return activeMode;
+  }
+
+  function getNavTextColor(mode: NavBackgroundMode) {
+    if (mode === "accent") {
+      return "text-white";
+    }
+
+    return "text-text-primary";
+  }
+
+  function renderNavBackgroundElement(mode: NavBackgroundMode) {
+    if (mode === "accent") {
+      return (
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-accent-gradient transition-colors duration-300"
+        />
+      );
+    }
+
+    return (
+      <div
+        aria-hidden
+        className="absolute inset-0 overflow-hidden transition-colors duration-300"
+        style={{ backgroundColor: "white" }}
+      >
+        <div
+          className="pointer-events-none absolute top-0 left-0 w-screen scale-[-1] bg-cover bg-center bg-no-repeat opacity-90"
+          style={{
+            backgroundImage: `url(${background})`,
+            height: "100vh",
+          }}
+        />
+      </div>
+    );
+  }
+
+  function resolveMenuIconClass(
+    menuOpen: boolean,
+    navBackgroundMode: NavBackgroundMode,
+  ) {
+    if (menuOpen) {
+      return "text-white";
+    }
+
+    if (navBackgroundMode === "accent") {
+      return "text-white";
+    }
+
+    return "text-text-primary";
+  }
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -343,6 +343,7 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
+      <img src={logo} className="invisible p-4" />
     </>
   );
 }
