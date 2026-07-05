@@ -1,10 +1,16 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Layout from "./components/Layout";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
-import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/about/AboutPage";
+import HomePage from "./pages/home/HomePage";
+import ContactPage from "./pages/contact/ContactPage";
+import { useEffect } from "react";
 
 export default function App() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <Layout>
       <Routes>

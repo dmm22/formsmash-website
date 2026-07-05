@@ -1,8 +1,6 @@
-import logo from "../assets/logo.png";
-
 export default function Footer() {
   return (
-    <footer className="mb-8 flex flex-col gap-4 p-4">
+    <footer className="my-8 flex flex-col gap-4 p-4">
       {/* <div className="mb-8 flex flex-col gap-1">
         <div className="flex items-center gap-2">
           <img src={logo} alt="FormSmash" className="w-8" />

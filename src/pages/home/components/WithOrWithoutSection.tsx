@@ -1,4 +1,4 @@
-import Gif from "./Gif";
+import Gif from "../../../components/Gif";
 import beforeGif from "../assets/before.gif";
 import afterGif from "../assets/after.gif";
 

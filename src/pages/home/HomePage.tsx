@@ -1,12 +1,12 @@
-import Hero from "../components/Hero";
-import Gif from "../components/Gif";
-import before from "../assets/before.gif";
-import after from "../assets/after.gif";
-import accuracy from "../assets/accuracy.gif";
-import autofillData from "../assets/autofill-data.gif";
-import install from "../assets/install.gif";
+import Hero from "./components/Hero";
+import Gif from "../../components/Gif";
+import before from "./assets/before.gif";
+import after from "./assets/after.gif";
+import accuracy from "./assets/accuracy.gif";
+import autofillData from "./assets/autofill-data.gif";
+import install from "./assets/install.gif";
 
-import FeatureShowcase from "../components/FeatureShowcase";
+import FeatureShowcase from "./components/FeatureShowcase";
 
 export default function HomePage() {
   const battleTestedTitle = (
