@@ -6,15 +6,22 @@ import ContactPage from "./pages/contact/ContactPage";
 import PrivacyPage from "./pages/privacy/PrivacyPage";
 import TermsOfServicePage from "./pages/terms_of_service/TermsOfServicePage";
 import NotFoundPage from "./pages/page_not_found/NotFoundPage";
-import { useEffect } from "react";
-import useAnalyticsEvents from "./hooks/useAnalyticsEvents";
+import { useEffect, useRef } from "react";
+import { useAnalytics } from "./contexts/AnalyticsContext";
 
 export default function App() {
   const { pathname } = useLocation();
-  const { sendEvent } = useAnalyticsEvents();
+  const { sendEvent } = useAnalytics();
+  const hasSentPageVisitRef = useRef<string | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    if (hasSentPageVisitRef.current === pathname) {
+      return;
+    }
+
+    hasSentPageVisitRef.current = pathname;
     sendEvent("page_visit");
   }, [pathname, sendEvent]);
 

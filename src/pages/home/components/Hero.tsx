@@ -1,18 +1,15 @@
 import hero from "../assets/hero.png";
-import useAnalyticsEvents from "../../../hooks/useAnalyticsEvents";
-import useScrollViewAnalytics from "../hooks/useScrollViewAnalytics";
+import ScrollViewAnchor from "../../../components/ScrollViewAnchor";
+import { useAnalytics, useScrollViewAnalytics } from "../../../contexts/AnalyticsContext";
+import { openExternalUrl } from "../../../utils/urlUtils";
 
 export default function Hero() {
-  const observerRef = useScrollViewAnalytics("hero_viewed");
-  const { sendEvent } = useAnalyticsEvents();
+  const { sendEvent } = useAnalytics();
+  const { scrollObserverRef } = useScrollViewAnalytics("hero_viewed");
 
   const handleCtaButtonClicked = () => {
     sendEvent("cta_button_clicked");
-    window.open(
-      import.meta.env.VITE_CHROME_LISTING_URL,
-      "_blank",
-      "noopener,noreferrer",
-    );
+    openExternalUrl(import.meta.env.VITE_CHROME_LISTING_URL);
   };
 
   return (
@@ -20,11 +17,7 @@ export default function Hero() {
       data-nav-background="image"
       className="relative flex h-screen flex-col items-center justify-center gap-8 p-4"
     >
-      <div
-        ref={observerRef}
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 left-0 h-px w-full opacity-0"
-      />
+      <ScrollViewAnchor ref={scrollObserverRef} />
       <div className="mb-6 flex flex-col items-center justify-center gap-2">
         <h1 className="text-center">
           Never Type Your Resume Into Another Job Application Again

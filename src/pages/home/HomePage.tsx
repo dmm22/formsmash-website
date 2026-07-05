@@ -46,7 +46,7 @@ export default function HomePage() {
       <FeatureShowcase
         src={install}
         alt="Install"
-        title={<h2 className="text-center">Try Form Smash Today</h2>}
+        title={<h2 className="text-center">Try FormSmash Today</h2>}
         bullets={[
           "No signup required",
           "No credit card needed",

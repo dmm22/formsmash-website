@@ -1,123 +1,92 @@
 import { useNavigate } from "react-router-dom";
-import { routes } from "../routes";
-import useAnalyticsEvents from "../hooks/useAnalyticsEvents";
-import useScrollViewAnalytics from "../pages/home/hooks/useScrollViewAnalytics";
+import ScrollViewAnchor from "./ScrollViewAnchor";
+import { routes, type AppRoutePath } from "../routes";
+import { openExternalUrl } from "../utils/urlUtils";
+import { useAnalytics, useScrollViewAnalytics } from "../contexts/AnalyticsContext";
+
+type FooterLinkItem = {
+  label: string;
+  path?: AppRoutePath;
+  externalUrl?: string;
+};
+
+type FooterSection = {
+  title: string;
+  links: FooterLinkItem[];
+};
+
+const footerSections: FooterSection[] = [
+  {
+    title: "Product",
+    links: [
+      {
+        label: "Install The Extension",
+        externalUrl: import.meta.env.VITE_CHROME_LISTING_URL,
+      },
+      {
+        label: "Custom GPT",
+        externalUrl: import.meta.env.VITE_CUSTOM_GPT_URL,
+      },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { label: "Contact", path: routes.contact.path },
+      { label: "Privacy Policy", path: routes.privacy.path },
+      { label: "Terms of Service", path: routes.terms.path },
+    ],
+  },
+  {
+    title: "About",
+    links: [{ label: "About FormSmash", path: routes.about.path }],
+  },
+];
 
 export default function Footer() {
   const navigate = useNavigate();
-  const { sendEvent } = useAnalyticsEvents();
-  const observerRef = useScrollViewAnalytics("footer_scrolled_into_view");
+  const { sendEvent } = useAnalytics();
+  const { scrollObserverRef } = useScrollViewAnalytics(
+    "footer_scrolled_into_view",
+  );
 
-  const handleFooterLinkClicked = (
-    label: string,
-    path?: string,
-    externalUrl?: string,
-  ) => {
-    sendEvent("footer_link_clicked", { label });
-
-    if (path) {
-      navigate(path);
+  const handleFooterLinkClicked = (link: FooterLinkItem) => {
+    if (!link.path && !link.externalUrl) {
       return;
     }
 
-    if (!externalUrl) {
+    sendEvent("footer_link_clicked", { label: link.label });
+
+    if (link.path) {
+      navigate(link.path);
       return;
     }
 
-    window.open(externalUrl, "_blank", "noopener,noreferrer");
+    if (!link.externalUrl) {
+      return;
+    }
+
+    openExternalUrl(link.externalUrl);
   };
 
   return (
     <footer className="relative mb-8 flex flex-col gap-4 p-4">
-      <div
-        ref={observerRef}
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 left-0 h-px w-full opacity-0"
-      />
+      <ScrollViewAnchor ref={scrollObserverRef} />
       <div className="grid grid-cols-2 gap-8">
-        <div>
-          <strong className="underline">Product</strong>
-          <ul>
-            <li className="text-text-secondary">
-              <button
-                type="button"
-                onClick={() =>
-                  handleFooterLinkClicked(
-                    "Install The Extension",
-                    undefined,
-                    import.meta.env.VITE_CHROME_LISTING_URL,
-                  )
-                }
-              >
-                Install The Extension
-              </button>
-            </li>
-            <li className="text-text-secondary">
-              <button
-                type="button"
-                onClick={() =>
-                  handleFooterLinkClicked(
-                    "Custom GPT",
-                    undefined,
-                    import.meta.env.VITE_CUSTOM_GPT_URL,
-                  )
-                }
-              >
-                Custom GPT
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <strong className="underline">Support</strong>
-          <ul>
-            <li className="text-text-secondary">
-              <button
-                type="button"
-                onClick={() =>
-                  handleFooterLinkClicked("Contact", routes.contact.path)
-                }
-              >
-                Contact
-              </button>
-            </li>
-            <li className="text-text-secondary">
-              <button
-                type="button"
-                onClick={() =>
-                  handleFooterLinkClicked("Privacy Policy", routes.privacy.path)
-                }
-              >
-                Privacy Policy
-              </button>
-            </li>
-            <li className="text-text-secondary">
-              <button
-                type="button"
-                onClick={() =>
-                  handleFooterLinkClicked("Terms of Service", routes.terms.path)
-                }
-              >
-                Terms of Service
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <strong className="underline">About</strong>
-          <ul>
-            <li className="text-text-secondary">
-              <button
-                type="button"
-                onClick={() =>
-                  handleFooterLinkClicked("About FormSmash", routes.about.path)
-                }
-              >
-                About FormSmash
-              </button>
-            </li>
-          </ul>
-        </div>
+        {footerSections.map((section) => (
+          <div key={section.title}>
+            <strong className="underline">{section.title}</strong>
+            <ul>
+              {section.links.map((link) => (
+                <li key={link.label} className="text-text-secondary">
+                  <button onClick={() => handleFooterLinkClicked(link)}>
+                    {link.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </footer>
   );

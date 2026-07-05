@@ -1,19 +1,20 @@
 import axios from "axios";
 import { useState, type SubmitEvent } from "react";
-import useAnalyticsEvents from "../../../hooks/useAnalyticsEvents";
+import type { SendAnalyticsEvent } from "../../../contexts/AnalyticsContext";
 import { prepareContactPayload } from "../contactForm";
 import { postContactMessage } from "../../../services/contactService";
 
 type SubmitStatus = "idle" | "submitting" | "success" | "error";
 
-const useContactForm = () => {
+const useContactForm = (sendEvent: SendAnalyticsEvent) => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [statusMessage, setStatusMessage] = useState("");
-  const { sendEvent } = useAnalyticsEvents();
 
   const isSubmitting = status === "submitting";
+  const statusMessageClassName =
+    status === "error" ? "text-text-secondary" : "text-text-primary";
 
   const resolveContactErrorMessage = (httpStatus: number | undefined) => {
     if (httpStatus === 429) {
@@ -21,22 +22,6 @@ const useContactForm = () => {
     }
 
     return "Something went wrong. Please try again.";
-  };
-
-  const resolveStatusMessageClassName = () => {
-    if (status === "error") {
-      return "text-text-secondary";
-    }
-
-    return "text-text-primary";
-  };
-
-  const handleEmailBlur = () => {
-    sendEvent("contact_email_input_changed", { value: email });
-  };
-
-  const handleMessageBlur = () => {
-    sendEvent("contact_message_input_changed", { value: message });
   };
 
   const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
@@ -85,9 +70,7 @@ const useContactForm = () => {
     setMessage,
     statusMessage,
     isSubmitting,
-    statusMessageClassName: resolveStatusMessageClassName(),
-    handleEmailBlur,
-    handleMessageBlur,
+    statusMessageClassName,
     handleSubmit,
   };
 };

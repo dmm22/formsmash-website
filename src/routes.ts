@@ -1,9 +1,3 @@
-export type AppRoute = {
-  path: string;
-  label: string;
-  mobileOnly?: boolean;
-};
-
 export const routes = {
   home: { path: "/", label: "Home", mobileOnly: true },
   about: { path: "/about", label: "About" },
@@ -11,5 +5,13 @@ export const routes = {
   privacy: { path: "/privacy", label: "Privacy Policy" },
   terms: { path: "/terms", label: "Terms of Service" },
 } as const;
+
+export type AppRoutePath = (typeof routes)[keyof typeof routes]["path"];
+
+export type AppRoute = {
+  path: AppRoutePath;
+  label: string;
+  mobileOnly?: boolean;
+};
 
 export const navLinks: AppRoute[] = [routes.home, routes.about, routes.contact];

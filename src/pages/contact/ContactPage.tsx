@@ -1,11 +1,12 @@
 import SecondaryPageShell from "../../components/SecondaryPageShell";
-import useAnalyticsEvents from "../../hooks/useAnalyticsEvents";
+import { useAnalytics } from "../../contexts/AnalyticsContext";
+import { openExternalUrl } from "../../utils/urlUtils";
 import send from "./assets/send.png";
 import openaiLogo from "./assets/openai_logo.png";
 import useContactForm from "./hooks/useContactForm";
 
 export default function ContactPage() {
-  const { sendEvent } = useAnalyticsEvents();
+  const { sendEvent } = useAnalytics();
   const {
     email,
     setEmail,
@@ -14,19 +15,25 @@ export default function ContactPage() {
     statusMessage,
     isSubmitting,
     statusMessageClassName,
-    handleEmailBlur,
-    handleMessageBlur,
     handleSubmit,
-  } = useContactForm();
+  } = useContactForm(sendEvent);
 
   const handleCustomGptButtonClicked = () => {
     sendEvent("custom_gpt_button_clicked");
-    window.open(
-      import.meta.env.VITE_CUSTOM_GPT_URL,
-      "_blank",
-      "noopener,noreferrer",
-    );
+    openExternalUrl(import.meta.env.VITE_CUSTOM_GPT_URL);
   };
+
+  function renderStatusMessage() {
+    if (!statusMessage) {
+      return null;
+    }
+
+    return (
+      <p role="status" className={statusMessageClassName}>
+        {statusMessage}
+      </p>
+    );
+  }
 
   return (
     <SecondaryPageShell src={send} alt="Send" title="Contact FormSmash">
@@ -43,7 +50,6 @@ export default function ContactPage() {
             disabled={isSubmitting}
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            onBlur={handleEmailBlur}
             className="rounded-lg border border-border-primary p-3"
           />
         </div>
@@ -58,17 +64,11 @@ export default function ContactPage() {
             disabled={isSubmitting}
             value={message}
             onChange={(event) => setMessage(event.target.value)}
-            onBlur={handleMessageBlur}
             className="h-64 rounded-lg border border-border-primary p-3"
           />
         </div>
-        {statusMessage && (
-          <p role="status" className={statusMessageClassName}>
-            {statusMessage}
-          </p>
-        )}
+        {renderStatusMessage()}
         <button
-          type="submit"
           disabled={isSubmitting}
           className="w-full rounded-lg bg-accent px-4 py-2 text-white disabled:cursor-not-allowed disabled:opacity-60"
         >
@@ -87,7 +87,6 @@ export default function ContactPage() {
           directly, send me a message and I'll take a look as soon as I can.
         </p>
         <button
-          type="button"
           onClick={handleCustomGptButtonClicked}
           className="flex items-center justify-center gap-2 rounded-lg border border-border-accent bg-bg-accent-light p-2"
         >

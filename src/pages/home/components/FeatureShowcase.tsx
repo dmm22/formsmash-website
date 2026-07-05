@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import Gif from "../../../components/Gif";
-import type { ShowcaseEventName } from "../../../hooks/useAnalyticsEvents";
-import useScrollViewAnalytics from "../hooks/useScrollViewAnalytics";
+import ScrollViewAnchor from "../../../components/ScrollViewAnchor";
+import { useScrollViewAnalytics } from "../../../contexts/AnalyticsContext";
+import type { ShowcaseEventName } from "../../../services/analyticsService";
 
 type FeatureShowcaseProps = {
   src: string;
@@ -12,17 +13,8 @@ type FeatureShowcaseProps = {
   scrollEventName: ShowcaseEventName;
 };
 
-export default function FeatureShowcase({
-  src,
-  alt,
-  title,
-  bullets,
-  isAccentBackground = false,
-  scrollEventName,
-}: FeatureShowcaseProps) {
-  const observerRef = useScrollViewAnalytics(scrollEventName);
-
-  const sectionClasses = `
+function getFeatureShowcaseSectionClasses(isAccentBackground: boolean) {
+  const baseClasses = `
     relative
     flex
     h-screen
@@ -33,20 +25,31 @@ export default function FeatureShowcase({
     border-border-primary
 
     p-4
-
-    ${isAccentBackground ? "bg-accent-gradient text-white" : ""}
   `;
+
+  if (isAccentBackground) {
+    return `${baseClasses} bg-accent-gradient text-white`;
+  }
+
+  return baseClasses;
+}
+
+export default function FeatureShowcase({
+  src,
+  alt,
+  title,
+  bullets,
+  isAccentBackground = false,
+  scrollEventName,
+}: FeatureShowcaseProps) {
+  const { scrollObserverRef } = useScrollViewAnalytics(scrollEventName);
 
   return (
     <section
       data-nav-background={isAccentBackground ? "accent" : "image"}
-      className={sectionClasses}
+      className={getFeatureShowcaseSectionClasses(isAccentBackground)}
     >
-      <div
-        ref={observerRef}
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 left-0 h-px w-full opacity-0"
-      />
+      <ScrollViewAnchor ref={scrollObserverRef} />
       {title}
       <ul className="flex list-outside list-disc flex-col gap-6 pl-6 text-xl">
         {bullets.map((bullet) => (
