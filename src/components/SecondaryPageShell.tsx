@@ -20,7 +20,9 @@ export default function SecondaryPageShell({
       return null;
     }
 
-    return <img src={src} alt={alt ?? ""} className="max-w-3/5" />;
+    return (
+      <img src={src} alt={alt ?? ""} className="max-w-3/5 lg:max-h-[30dvh]" />
+    );
   }
 
   function renderCaption() {
@@ -33,10 +35,11 @@ export default function SecondaryPageShell({
 
   return (
     <>
-      <main className="flex flex-col gap-6 p-4">
+      <main className="flex flex-col gap-6 p-4 lg:mx-auto lg:w-[90dvw]">
+        <div className="z-40 min-h-18 w-full" />
         <header className="flex flex-col items-center gap-4">
           {renderHeaderImage()}
-          <h1 className="text-accent">{title}</h1>
+          <h3 className="text-accent">{title}</h3>
           {renderCaption()}
         </header>
         <hr className="my-4 border-dashed border-border-primary" />

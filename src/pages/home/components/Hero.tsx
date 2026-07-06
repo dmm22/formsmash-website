@@ -37,7 +37,7 @@ export default function Hero() {
 
   return (
     <div className="flex h-screen flex-col">
-      <div className="z-50 min-h-18 w-full" />
+      <div className="z-40 min-h-18 w-full" />
       <section data-nav-background="image" className={heroSectionClasses}>
         <ScrollViewAnchor ref={scrollObserverRef} />
         <div className="flex flex-col items-center justify-center gap-2 lg:items-start lg:gap-4">
