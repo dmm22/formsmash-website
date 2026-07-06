@@ -23,15 +23,17 @@ export default function FeatureShowcase({
   return (
     <section
       data-nav-background="image"
-      className="relative flex h-screen flex-col justify-evenly border-b border-border-primary p-4 lg:mx-auto lg:max-w-7xl"
+      className="relative flex h-screen flex-col justify-evenly border-b border-border-primary p-4 lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-[40%_60%] lg:place-items-center lg:gap-24"
     >
       <ScrollViewAnchor ref={scrollObserverRef} />
-      {title}
-      <ul className="flex list-outside list-disc flex-col gap-6 pl-6 text-xl">
-        {bullets.map((bullet) => (
-          <li key={bullet}>{bullet}</li>
-        ))}
-      </ul>
+      <div className="flex flex-col gap-14">
+        {title}
+        <ul className="flex list-outside list-disc flex-col gap-6 pl-6 text-xl">
+          {bullets.map((bullet) => (
+            <li key={bullet}>{bullet}</li>
+          ))}
+        </ul>
+      </div>
       <img src={src} alt={alt} className="min-w-0 rounded-lg shadow-xl" />
     </section>
   );

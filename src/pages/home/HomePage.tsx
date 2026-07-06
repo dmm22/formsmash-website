@@ -3,21 +3,21 @@ import accuracy from "./assets/accuracy.gif";
 import autofillData from "./assets/autofill-data.gif";
 import install from "./assets/install.gif";
 import FeatureShowcase from "./components/FeatureShowcase";
-import BeforeAndAfter from "./components/BeforeAndAfter";
+import BeforeAfter from "./components/BeforeAfter";
 
 export default function HomePage() {
   return (
     <main>
       <Hero />
       <div className="bg-accent-gradient">
-        <BeforeAndAfter />
+        <BeforeAfter />
       </div>
       <FeatureShowcase
         src={accuracy}
         alt="Accuracy"
         scrollEventName="battle_tested_section_viewed"
         title={
-          <h2 className="text-center">
+          <h2 className="text-center lg:ml-4 lg:text-start">
             Battle Tested On{" "}
             <span className="text-accent">Real Applications</span>
           </h2>
@@ -32,7 +32,11 @@ export default function HomePage() {
         <FeatureShowcase
           src={autofillData}
           alt="Autofill Data"
-          title={<h2 className="text-center">Manage Your Autofill Data</h2>}
+          title={
+            <h2 className="text-center lg:ml-4 lg:text-start">
+              Manage Your Autofill Data
+            </h2>
+          }
           bullets={[
             "Review and edit extracted information before using it",
             "Add answers that aren't included in your resume",
@@ -46,7 +50,11 @@ export default function HomePage() {
       <FeatureShowcase
         src={install}
         alt="Install"
-        title={<h2 className="text-center">Try FormSmash Today</h2>}
+        title={
+          <h2 className="text-center lg:ml-4 lg:text-start">
+            Try FormSmash Today
+          </h2>
+        }
         bullets={[
           "No signup required",
           "No credit card needed",
