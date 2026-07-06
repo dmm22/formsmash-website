@@ -33,6 +33,8 @@ export default function Hero() {
     lg:justify-center
 
     lg:p-0
+    lg:mx-auto 
+    lg:max-w-7xl
   `;
 
   return (

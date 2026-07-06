@@ -3,15 +3,15 @@ import accuracy from "./assets/accuracy.gif";
 import autofillData from "./assets/autofill-data.gif";
 import install from "./assets/install.gif";
 import FeatureShowcase from "./components/FeatureShowcase";
-import WithOrWithoutSection from "./components/WithOrWithoutSection";
+import BeforeAndAfter from "./components/BeforeAndAfter";
 
 export default function HomePage() {
   return (
     <main>
       <Hero />
-
-      <WithOrWithoutSection />
-
+      <div className="bg-accent-gradient">
+        <BeforeAndAfter />
+      </div>
       <FeatureShowcase
         src={accuracy}
         alt="Accuracy"

@@ -33,9 +33,9 @@ html {
   @apply text-[85%] 2xl:text-[100%];
 }
 
-body {
+/* body {
   @apply lg:mx-auto lg:max-w-7xl;
-}
+} */
 
 @layer base {
   html {

@@ -36,7 +36,7 @@ function ComparisonBlock({ title, duration, src, alt }: ComparisonBlockProps) {
   );
 }
 
-export default function WithOrWithoutSection() {
+export default function BeforeAndAfter() {
   const { scrollObserverRef } = useScrollViewAnalytics(
     "with_or_without_section_viewed",
   );
@@ -44,7 +44,7 @@ export default function WithOrWithoutSection() {
   return (
     <section
       data-nav-background="accent"
-      className="relative flex h-screen flex-col justify-evenly bg-accent-gradient p-4 text-white"
+      className="relative flex h-screen flex-col justify-evenly p-4 text-white lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-8"
     >
       <ScrollViewAnchor ref={scrollObserverRef} />
       {comparisonBlocks.map((block) => (
