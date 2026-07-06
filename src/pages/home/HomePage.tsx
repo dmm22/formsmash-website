@@ -9,26 +9,28 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
-      <div className="bg-accent-gradient">
+      <div className="border-b border-border-primary bg-accent-gradient">
         <BeforeAfter />
       </div>
-      <FeatureShowcase
-        src={accuracy}
-        alt="Accuracy"
-        scrollEventName="battle_tested_section_viewed"
-        title={
-          <h2 className="text-center lg:text-start">
-            Battle Tested On{" "}
-            <span className="text-accent">Real Applications</span>
-          </h2>
-        }
-        bullets={[
-          "Works on LinkedIn, Indeed, Greenhouse Jobs, Workday, and company career sites",
-          "Continuously improved through real-world use",
-          "Built to handle dropdowns, checkboxes, radio buttons, and more",
-        ]}
-      />
-      <div className="bg-accent-gradient text-white">
+      <div className="border-b border-border-primary">
+        <FeatureShowcase
+          src={accuracy}
+          alt="Accuracy"
+          scrollEventName="battle_tested_section_viewed"
+          title={
+            <h2 className="text-center lg:text-start">
+              Battle Tested On{" "}
+              <span className="text-accent">Real Applications</span>
+            </h2>
+          }
+          bullets={[
+            "Works on LinkedIn, Indeed, Greenhouse Jobs, Workday, and company career sites",
+            "Continuously improved through real-world use",
+            "Built to handle dropdowns, checkboxes, radio buttons, and more",
+          ]}
+        />
+      </div>
+      <div className="border-b border-border-primary bg-accent-gradient text-white">
         <FeatureShowcase
           src={autofillData}
           alt="Autofill Data"
@@ -48,19 +50,21 @@ export default function HomePage() {
         />
       </div>
 
-      <FeatureShowcase
-        src={install}
-        alt="Install"
-        title={
-          <h2 className="text-center lg:text-start">Try FormSmash Today</h2>
-        }
-        bullets={[
-          "No signup required",
-          "No credit card needed",
-          "No lengthy setup process",
-        ]}
-        scrollEventName="try_it_out_section_viewed"
-      />
+      <div className="border-b border-border-primary">
+        <FeatureShowcase
+          src={install}
+          alt="Install"
+          title={
+            <h2 className="text-center lg:text-start">Try FormSmash Today</h2>
+          }
+          bullets={[
+            "No signup required",
+            "No credit card needed",
+            "No lengthy setup process",
+          ]}
+          scrollEventName="try_it_out_section_viewed"
+        />
+      </div>
     </main>
   );
 }

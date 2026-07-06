@@ -2,7 +2,10 @@ import { useNavigate } from "react-router-dom";
 import ScrollViewAnchor from "./ScrollViewAnchor";
 import { routes, type AppRoutePath } from "../routes";
 import { openExternalUrl } from "../utils/urlUtils";
-import { useAnalytics, useScrollViewAnalytics } from "../contexts/AnalyticsContext";
+import {
+  useAnalytics,
+  useScrollViewAnalytics,
+} from "../contexts/AnalyticsContext";
 
 type FooterLinkItem = {
   label: string;
@@ -70,9 +73,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative mb-8 flex flex-col gap-4 p-4">
+    <footer className="relative flex flex-col gap-4 px-4 py-8">
       <ScrollViewAnchor ref={scrollObserverRef} />
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-2 gap-8 lg:mx-auto lg:w-[90dvw] lg:grid-cols-3">
         {footerSections.map((section) => (
           <div key={section.title}>
             <strong className="underline">{section.title}</strong>

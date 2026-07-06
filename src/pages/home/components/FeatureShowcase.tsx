@@ -34,9 +34,6 @@ export default function FeatureShowcase({
       flex-col
       justify-evenly
 
-      border-b
-      border-border-primary
-
       lg:max-w-[90dvw]
 
       lg:p-0
@@ -44,6 +41,7 @@ export default function FeatureShowcase({
 
       lg:flex-row
       lg:items-center
+      lg:justify-between
       lg:gap-24
     `;
 
@@ -69,7 +67,7 @@ export default function FeatureShowcase({
         <img
           src={src}
           alt={alt}
-          className="min-w-0 rounded-lg shadow-xl lg:min-w-[50dvw]"
+          className="min-w-0 rounded-lg shadow-xl lg:min-w-[45dvw]"
         />
       </div>
     </section>
