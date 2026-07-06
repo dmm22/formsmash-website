@@ -55,7 +55,9 @@ export default function HomePage() {
           src={door}
           alt="Door"
           title={
-            <h2 className="text-center lg:text-start">Try FormSmash Today</h2>
+            <h2 className="text-center lg:text-start">
+              Try FormSmash For <span className="text-accent">Free</span> Today
+            </h2>
           }
           bullets={[
             "No signup required",
