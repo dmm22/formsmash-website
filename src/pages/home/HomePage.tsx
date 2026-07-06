@@ -17,7 +17,7 @@ export default function HomePage() {
         alt="Accuracy"
         scrollEventName="battle_tested_section_viewed"
         title={
-          <h2 className="text-center lg:ml-4 lg:text-start">
+          <h2 className="text-center lg:text-start">
             Battle Tested On{" "}
             <span className="text-accent">Real Applications</span>
           </h2>
@@ -33,7 +33,7 @@ export default function HomePage() {
           src={autofillData}
           alt="Autofill Data"
           title={
-            <h2 className="text-center lg:ml-4 lg:text-start">
+            <h2 className="text-center lg:text-start">
               Manage Your Autofill Data
             </h2>
           }
@@ -44,6 +44,7 @@ export default function HomePage() {
             "Use the same autofill data across future applications",
           ]}
           scrollEventName="manage_autofill_data_section_viewed"
+          isRowReverse={true}
         />
       </div>
 
@@ -51,9 +52,7 @@ export default function HomePage() {
         src={install}
         alt="Install"
         title={
-          <h2 className="text-center lg:ml-4 lg:text-start">
-            Try FormSmash Today
-          </h2>
+          <h2 className="text-center lg:text-start">Try FormSmash Today</h2>
         }
         bullets={[
           "No signup required",

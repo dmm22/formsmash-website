@@ -9,6 +9,7 @@ type FeatureShowcaseProps = {
   title: ReactNode;
   bullets: string[];
   scrollEventName: ShowcaseEventName;
+  isRowReverse?: boolean;
 };
 
 export default function FeatureShowcase({
@@ -17,14 +18,44 @@ export default function FeatureShowcase({
   title,
   bullets,
   scrollEventName,
+  isRowReverse = false,
 }: FeatureShowcaseProps) {
   const { scrollObserverRef } = useScrollViewAnalytics(scrollEventName);
 
+  const getSectionClasses = () => {
+    const baseClasses = `
+      h-screen
+
+      p-4
+
+      relative
+
+      flex
+      flex-col
+      justify-evenly
+
+      border-b
+      border-border-primary
+
+      lg:max-w-[90dvw]
+
+      lg:p-0
+      lg:mx-auto
+
+      lg:flex-row
+      lg:items-center
+      lg:gap-24
+    `;
+
+    if (isRowReverse) {
+      return `${baseClasses} lg:flex-row-reverse`;
+    }
+
+    return baseClasses;
+  };
+
   return (
-    <section
-      data-nav-background="image"
-      className="relative flex h-screen flex-col justify-evenly border-b border-border-primary p-4 lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-[40%_60%] lg:place-items-center lg:gap-24"
-    >
+    <section data-nav-background="image" className={getSectionClasses()}>
       <ScrollViewAnchor ref={scrollObserverRef} />
       <div className="flex flex-col gap-14">
         {title}
@@ -34,7 +65,13 @@ export default function FeatureShowcase({
           ))}
         </ul>
       </div>
-      <img src={src} alt={alt} className="min-w-0 rounded-lg shadow-xl" />
+      <div>
+        <img
+          src={src}
+          alt={alt}
+          className="min-w-0 rounded-lg shadow-xl lg:min-w-[50dvw]"
+        />
+      </div>
     </section>
   );
 }

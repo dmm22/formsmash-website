@@ -144,7 +144,7 @@ export default function Navbar() {
       {renderNavBackgroundElement(backgroundMode)}
 
       <div
-        className={`relative flex w-full items-center justify-between lg:mx-auto lg:max-w-7xl ${getNavTextColor(backgroundMode)}`}
+        className={`relative flex w-full items-center justify-between lg:mx-auto lg:max-w-[90dvw] ${getNavTextColor(backgroundMode)}`}
       >
         <button onClick={handleHomeClicked} className="flex items-center gap-2">
           <img src={logo} alt="FormSmash Logo" />
