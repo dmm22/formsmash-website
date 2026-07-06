@@ -24,8 +24,8 @@
 @utility bg-accent-gradient {
   background-image: linear-gradient(
     to bottom right,
-    var(--color-accent-light),
-    var(--color-accent)
+    #a5afff,
+    #6376f9
   );
 }
 

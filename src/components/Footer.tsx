@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 import ScrollViewAnchor from "./ScrollViewAnchor";
 import { routes, type AppRoutePath } from "../routes";
 import { openExternalUrl } from "../utils/urlUtils";
@@ -30,6 +31,7 @@ const footerSections: FooterSection[] = [
         label: "Custom GPT",
         externalUrl: import.meta.env.VITE_CUSTOM_GPT_URL,
       },
+      { label: "About FormSmash", path: routes.about.path },
     ],
   },
   {
@@ -39,10 +41,6 @@ const footerSections: FooterSection[] = [
       { label: "Privacy Policy", path: routes.privacy.path },
       { label: "Terms of Service", path: routes.terms.path },
     ],
-  },
-  {
-    title: "About",
-    links: [{ label: "About FormSmash", path: routes.about.path }],
   },
 ];
 
@@ -73,9 +71,18 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative flex flex-col gap-4 px-4 py-8">
+    <footer className="relative flex items-center justify-between gap-4 py-8 lg:mx-auto lg:w-[90dvw]">
       <ScrollViewAnchor ref={scrollObserverRef} />
-      <div className="grid grid-cols-2 gap-8 lg:mx-auto lg:w-[90dvw] lg:grid-cols-3">
+      <div className="mb-8 hidden flex-col gap-2 lg:flex">
+        <div className="flex items-center gap-2">
+          <img src={logo} alt="FormSmash Logo" className="h-7" />
+          <strong>FormSmash</strong>
+        </div>
+        <p className="w-max text-sm text-text-secondary">
+          Autofill job applications in one click.
+        </p>
+      </div>
+      <div className="flex w-full justify-between lg:justify-end lg:gap-36">
         {footerSections.map((section) => (
           <div key={section.title}>
             <strong className="underline">{section.title}</strong>

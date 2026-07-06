@@ -151,7 +151,7 @@ export default function Navbar() {
           <span className="hidden font-semibold xl:inline">FormSmash</span>
         </button>
 
-        <ul className="hidden items-center gap-10 md:flex">
+        <ul className="hidden items-center gap-18 md:flex">
           {desktopLinks.map((link) => (
             <li key={link.path}>
               <NavLinkItem
