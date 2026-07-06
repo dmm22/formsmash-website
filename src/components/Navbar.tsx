@@ -139,7 +139,7 @@ export default function Navbar() {
   return (
     <nav
       ref={navRef}
-      className="fixed top-0 left-0 isolate z-50 flex h-18 w-screen items-center justify-center outline-none"
+      className="fixed top-0 left-0 isolate z-50 flex h-18 w-screen items-center justify-center px-4 outline-none lg:px-0"
     >
       {renderNavBackgroundElement(backgroundMode)}
 
