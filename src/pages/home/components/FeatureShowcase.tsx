@@ -57,7 +57,7 @@ export default function FeatureShowcase({
       <ScrollViewAnchor ref={scrollObserverRef} />
       <div className="flex flex-col gap-14">
         {title}
-        <ul className="flex list-outside list-disc flex-col gap-6 pl-6 text-xl">
+        <ul className="flex list-outside list-disc flex-col gap-6 pl-6 text-2xl">
           {bullets.map((bullet) => (
             <li key={bullet}>{bullet}</li>
           ))}
