@@ -1,7 +1,7 @@
 import Hero from "./components/Hero";
-import accuracy from "./assets/accuracy.gif";
+import testing from "./assets/testing.png";
 import autofillData from "./assets/autofill-data.gif";
-import install from "./assets/install.gif";
+import door from "./assets/door.png";
 import FeatureShowcase from "./components/FeatureShowcase";
 import BeforeAfter from "./components/BeforeAfter";
 
@@ -14,8 +14,8 @@ export default function HomePage() {
       </div>
       <div className="border-b border-border-primary">
         <FeatureShowcase
-          src={accuracy}
-          alt="Accuracy"
+          src={testing}
+          alt="Battle Tested"
           scrollEventName="battle_tested_section_viewed"
           title={
             <h2 className="text-center lg:text-start">
@@ -52,8 +52,8 @@ export default function HomePage() {
 
       <div className="border-b border-border-primary">
         <FeatureShowcase
-          src={install}
-          alt="Install"
+          src={door}
+          alt="Door"
           title={
             <h2 className="text-center lg:text-start">Try FormSmash Today</h2>
           }
