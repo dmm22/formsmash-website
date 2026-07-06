@@ -1,40 +1,8 @@
-import Gif from "../../../components/Gif";
 import ScrollViewAnchor from "../../../components/ScrollViewAnchor";
 import { useScrollViewAnalytics } from "../../../contexts/AnalyticsContext";
 import before from "../assets/before.gif";
 import after from "../assets/after.gif";
-
-const comparisonBlocks = [
-  {
-    title: "Before FormSmash",
-    duration: "(30 seconds)",
-    src: before,
-    alt: "Before FormSmash",
-  },
-  {
-    title: "After FormSmash",
-    duration: "(5 seconds)",
-    src: after,
-    alt: "After FormSmash",
-  },
-];
-
-type ComparisonBlockProps = {
-  title: string;
-  duration: string;
-  src: string;
-  alt: string;
-};
-
-function ComparisonBlock({ title, duration, src, alt }: ComparisonBlockProps) {
-  return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      <h2 className="text-2xl font-bold">{title}</h2>
-      <p>{duration}</p>
-      <Gif src={src} alt={alt} />
-    </div>
-  );
-}
+import BeforeAndAfterComparison from "./BeforeAndAfterComparison";
 
 export default function BeforeAndAfter() {
   const { scrollObserverRef } = useScrollViewAnalytics(
@@ -44,18 +12,21 @@ export default function BeforeAndAfter() {
   return (
     <section
       data-nav-background="accent"
-      className="relative flex h-screen flex-col justify-evenly p-4 text-white lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-8"
+      className="relative flex h-screen flex-col justify-evenly p-4 text-white lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-24"
     >
       <ScrollViewAnchor ref={scrollObserverRef} />
-      {comparisonBlocks.map((block) => (
-        <ComparisonBlock
-          key={block.title}
-          title={block.title}
-          duration={block.duration}
-          src={block.src}
-          alt={block.alt}
-        />
-      ))}
+      <BeforeAndAfterComparison
+        title="Before FormSmash"
+        duration="(30 seconds)"
+        src={before}
+        alt="Before FormSmash"
+      />
+      <BeforeAndAfterComparison
+        title="After FormSmash"
+        duration="(5 seconds)"
+        src={after}
+        alt="After FormSmash"
+      />
     </section>
   );
 }

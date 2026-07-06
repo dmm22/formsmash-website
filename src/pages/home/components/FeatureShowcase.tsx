@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import Gif from "../../../components/Gif";
 import ScrollViewAnchor from "../../../components/ScrollViewAnchor";
 import { useScrollViewAnalytics } from "../../../contexts/AnalyticsContext";
 import type { ShowcaseEventName } from "../../../services/analyticsService";
@@ -9,45 +8,22 @@ type FeatureShowcaseProps = {
   alt: string;
   title: ReactNode;
   bullets: string[];
-  isAccentBackground?: boolean;
   scrollEventName: ShowcaseEventName;
 };
-
-function getFeatureShowcaseSectionClasses(isAccentBackground: boolean) {
-  const baseClasses = `
-    relative
-    flex
-    h-screen
-    flex-col
-    justify-evenly
-
-    border-b
-    border-border-primary
-
-    p-4
-  `;
-
-  if (isAccentBackground) {
-    return `${baseClasses} bg-accent-gradient text-white`;
-  }
-
-  return baseClasses;
-}
 
 export default function FeatureShowcase({
   src,
   alt,
   title,
   bullets,
-  isAccentBackground = false,
   scrollEventName,
 }: FeatureShowcaseProps) {
   const { scrollObserverRef } = useScrollViewAnalytics(scrollEventName);
 
   return (
     <section
-      data-nav-background={isAccentBackground ? "accent" : "image"}
-      className={getFeatureShowcaseSectionClasses(isAccentBackground)}
+      data-nav-background="image"
+      className="relative flex h-screen flex-col justify-evenly border-b border-border-primary p-4 lg:mx-auto lg:max-w-7xl"
     >
       <ScrollViewAnchor ref={scrollObserverRef} />
       {title}
@@ -56,7 +32,7 @@ export default function FeatureShowcase({
           <li key={bullet}>{bullet}</li>
         ))}
       </ul>
-      <Gif src={src} alt={alt} />
+      <img src={src} alt={alt} className="min-w-0 rounded-lg shadow-xl" />
     </section>
   );
 }

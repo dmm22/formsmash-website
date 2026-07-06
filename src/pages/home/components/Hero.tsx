@@ -35,6 +35,7 @@ export default function Hero() {
     lg:p-0
     lg:mx-auto 
     lg:max-w-7xl
+    lg:gap-24
   `;
 
   return (

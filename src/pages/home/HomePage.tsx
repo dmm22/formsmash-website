@@ -28,20 +28,20 @@ export default function HomePage() {
           "Built to handle dropdowns, checkboxes, radio buttons, and more",
         ]}
       />
-
-      <FeatureShowcase
-        src={autofillData}
-        alt="Autofill Data"
-        title={<h2 className="text-center">Manage Your Autofill Data</h2>}
-        bullets={[
-          "Review and edit extracted information before using it",
-          "Add answers that aren't included in your resume",
-          "Save common responses once instead of typing them repeatedly",
-          "Use the same autofill data across future applications",
-        ]}
-        isAccentBackground={true}
-        scrollEventName="manage_autofill_data_section_viewed"
-      />
+      <div className="bg-accent-gradient text-white">
+        <FeatureShowcase
+          src={autofillData}
+          alt="Autofill Data"
+          title={<h2 className="text-center">Manage Your Autofill Data</h2>}
+          bullets={[
+            "Review and edit extracted information before using it",
+            "Add answers that aren't included in your resume",
+            "Save common responses once instead of typing them repeatedly",
+            "Use the same autofill data across future applications",
+          ]}
+          scrollEventName="manage_autofill_data_section_viewed"
+        />
+      </div>
 
       <FeatureShowcase
         src={install}
