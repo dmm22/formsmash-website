@@ -67,7 +67,7 @@ export default function FeatureShowcase({
         <img
           src={src}
           alt={alt}
-          className="w-auto min-w-0 rounded-lg lg:h-[65dvh]"
+          className="w-auto min-w-0 max-w-full rounded-lg lg:max-h-[65dvh]"
         />
       </div>
     </section>
