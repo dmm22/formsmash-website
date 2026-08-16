@@ -10,7 +10,7 @@ export default function TermsOfServicePage() {
   return (
     <SecondaryPageShell
       title="Terms of Service"
-      caption="Effective date: May 26, 2026"
+      caption="Effective date: August 16, 2026"
     >
       <TermsAcceptanceAndEligibility />
       <TermsUseAndContent />

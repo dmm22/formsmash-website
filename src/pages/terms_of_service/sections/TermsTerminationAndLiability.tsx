@@ -19,7 +19,7 @@ export default function TermsTerminationAndLiability() {
         </p>
         <p className={paragraphClassName}>
           Sections that by their nature should survive termination (including
-          Sections 5, 6.2, 8, 11, 12, 13, and 14) will survive.
+          Sections 4.4, 5, 6.2, 8, 9, 11, 12, 13, 14, and 15) will survive.
         </p>
       </PolicySection>
 
@@ -58,7 +58,7 @@ export default function TermsTerminationAndLiability() {
           AGGREGATE LIABILITY FOR ALL CLAIMS ARISING OUT OF OR RELATING TO THE
           SERVICE OR THESE TERMS WILL NOT EXCEED THE GREATER OF (A) THE AMOUNT
           YOU PAID FORMSMASH IN THE TWELVE (12) MONTHS BEFORE THE EVENT GIVING
-          RISE TO LIABILITY OR (B) FIFTY US DOLLARS ($50).
+          RISE TO LIABILITY OR (B) ONE HUNDRED US DOLLARS ($100).
         </p>
         <p className={paragraphClassName}>
           These limitations apply even if FormSmash has been advised of the

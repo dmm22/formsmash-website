@@ -8,7 +8,7 @@ export default function PrivacyPage() {
   return (
     <SecondaryPageShell
       title="Privacy Policy"
-      caption="Effective date: July 5, 2026"
+      caption="Effective date: August 16, 2026"
     >
       <PrivacyIntroAndCollection />
       <PrivacyUseAndSharing />

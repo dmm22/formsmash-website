@@ -42,6 +42,17 @@ export default function TermsAcceptanceAndEligibility() {
         renewal date through the subscription management tools we provide.
       </p>
 
+      <p className={paragraphClassName}>
+        <strong className="text-text-primary">
+          Arbitration and class action waiver.
+        </strong>{" "}
+        SECTION 14 REQUIRES MOST DISPUTES BETWEEN YOU AND FORMSMASH TO BE
+        RESOLVED BY BINDING INDIVIDUAL ARBITRATION RATHER THAN IN COURT, AND
+        WAIVES YOUR RIGHT TO PARTICIPATE IN A CLASS ACTION. You may opt out of
+        Section 14 within 30 days of first accepting these Terms, as described
+        in Section 14.6.
+      </p>
+
       <PolicySection heading="1. Your acceptance of these Terms">
         <p className={paragraphClassName}>
           These Terms take effect when you install the Extension, create an
@@ -66,12 +77,14 @@ export default function TermsAcceptanceAndEligibility() {
       <PolicySection heading="2. Changes to these Terms">
         <p className={paragraphClassName}>
           We may update these Terms from time to time. When we do, we will post
-          the updated Terms with a revised effective date. If changes are
-          material, we may also notify you by email (if you have an account) or
-          through the Service. Your continued use of the Service after the
-          effective date of updated Terms constitutes acceptance of the
-          changes. If you do not agree to updated Terms, you must stop using
-          the Service and uninstall the Extension.
+          the updated Terms here with a revised effective date, and where a
+          change is material we will make reasonable efforts to give notice in
+          the Extension before it takes effect. Your continued use of the
+          Service after the effective date of updated Terms constitutes
+          acceptance of the changes. If you do not agree to updated Terms, you
+          must stop using the Service and uninstall the Extension. Changes to
+          Section 14 (Arbitration and dispute resolution) do not apply to any
+          dispute of which we had notice before the change.
         </p>
       </PolicySection>
 
