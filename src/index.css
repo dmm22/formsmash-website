@@ -8,21 +8,22 @@
 @theme {
   --font-sans: "Inter", system-ui, sans-serif;
 
-  --color-bg-accent-light: #dedffe;
+  --color-bg-accent-light: #e8f1ff;
 
-  --color-accent: #6e83ff;
-  --color-accent-light: #92a0ff;
-  --color-accent-hover: #89f;
+  --color-accent: #005de0;
+  --color-accent-light: #0a70ff;
+  --color-accent-hover: #0a70ff;
 
-  --color-text-primary: #141414;
-  --color-text-secondary: #696969;
+  --color-text-primary: #000;
+  --color-text-secondary: #737373;
 
-  --color-border-primary: #acb4c3;
-  --color-border-accent: #2443ff;
+  --color-border-primary: #e9ecf1;
+  --color-border-accent: #005de0;
 }
 
 @utility bg-accent-gradient {
-  background-image: linear-gradient(to bottom right, #a5afff, #6376f9);
+  background-color: #7d94f2;
+  background-image: none;
 }
 
 html {
@@ -40,7 +41,7 @@ html {
 }
 
 body {
-  @apply bg-white font-sans text-text-primary antialiased;
+  @apply bg-[#F0F6FF] font-sans text-text-primary antialiased;
 }
 
 button {

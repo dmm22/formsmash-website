@@ -10,7 +10,6 @@ export default function BeforeAfter() {
 
   return (
     <section
-      data-nav-background="accent"
       className="relative flex h-screen flex-col justify-evenly p-4 text-white lg:mx-auto lg:grid lg:max-w-[90dvw] lg:grid-cols-2 lg:gap-24 lg:p-0"
     >
       <ScrollViewAnchor ref={scrollObserverRef} />

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
 import ScrollViewAnchor from "./ScrollViewAnchor";
 import { routes, type AppRoutePath } from "../routes";
 import { openExternalUrl } from "../utils/urlUtils";

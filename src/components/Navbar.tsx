@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import background from "../assets/background.png";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
+import logoWhite from "../assets/logo_white.svg";
 import NavLinkItem from "./NavLinkItem";
 import NavbarMobileMenu from "./NavbarMobileMenu";
 import { navLinks, routes, type AppRoute } from "../routes";
@@ -61,6 +62,14 @@ export default function Navbar() {
     return activeMode;
   }
 
+  function getNavLogoSrc(mode: NavBackgroundMode) {
+    if (mode === "accent") {
+      return logoWhite;
+    }
+
+    return logo;
+  }
+
   function getNavTextColor(mode: NavBackgroundMode) {
     if (mode === "accent") {
       return "text-white";
@@ -82,8 +91,7 @@ export default function Navbar() {
     return (
       <div
         aria-hidden
-        className="absolute inset-0 overflow-hidden transition-colors duration-300"
-        style={{ backgroundColor: "white" }}
+        className="absolute inset-0 overflow-hidden bg-[#F0F6FF] transition-colors duration-300"
       >
         <div
           className="pointer-events-none absolute top-0 left-0 w-screen scale-[-1] bg-cover bg-center bg-no-repeat opacity-90"
@@ -146,9 +154,13 @@ export default function Navbar() {
       <div
         className={`relative flex w-full items-center justify-between lg:mx-auto lg:max-w-[90dvw] ${getNavTextColor(backgroundMode)}`}
       >
-        <button onClick={handleHomeClicked} className="flex items-center gap-2">
-          <img src={logo} alt="FormSmash Logo" />
-          <span className="hidden font-semibold xl:inline">FormSmash</span>
+        <button onClick={handleHomeClicked} className="flex items-center gap-3">
+          <img
+            src={getNavLogoSrc(backgroundMode)}
+            alt="FormSmash Logo"
+            className="h-7"
+          />
+          <span className="hidden font-[600] xl:inline">FormSmash</span>
         </button>
 
         <ul className="hidden items-center gap-18 md:flex">

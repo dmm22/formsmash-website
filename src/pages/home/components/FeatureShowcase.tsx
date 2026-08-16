@@ -53,7 +53,7 @@ export default function FeatureShowcase({
   };
 
   return (
-    <section data-nav-background="image" className={getSectionClasses()}>
+    <section className={getSectionClasses()}>
       <ScrollViewAnchor ref={scrollObserverRef} />
       <div className="flex flex-col gap-14 lg:min-w-1/3">
         {title}

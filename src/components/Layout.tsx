@@ -12,8 +12,7 @@ export default function Layout({ children }: LayoutProps) {
     <>
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10"
-        style={{ backgroundColor: "white" }}
+        className="pointer-events-none fixed inset-0 -z-10 bg-[#F0F6FF]"
       >
         <div
           className="h-full w-full scale-[-1] bg-cover bg-center bg-no-repeat opacity-90"

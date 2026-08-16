@@ -9,6 +9,7 @@ import NotFoundPage from "./pages/page_not_found/NotFoundPage";
 import { useEffect, useRef } from "react";
 import { useAnalytics } from "./contexts/AnalyticsContext";
 import SuccessPage from "./pages/subscription_success/SuccessPage";
+import UninstallPage from "./pages/uninstall/UninstallPage";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms" element={<TermsOfServicePage />} />
         <Route path="/success" element={<SuccessPage />} />
+        <Route path="/uninstall" element={<UninstallPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>
