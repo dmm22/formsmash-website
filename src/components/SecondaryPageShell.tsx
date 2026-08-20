@@ -41,7 +41,7 @@ export default function SecondaryPageShell({
         <div className="z-40 min-h-18 w-full" />
         <header className="flex flex-col items-center gap-4">
           {renderHeaderImage()}
-          <h3 className="text-accent">{title}</h3>
+          <h2 className="text-accent">{title}</h2>
           {renderCaption()}
         </header>
         {!excludeHr && (

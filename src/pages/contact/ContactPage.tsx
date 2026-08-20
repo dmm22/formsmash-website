@@ -35,8 +35,8 @@ export default function ContactPage() {
   }
 
   return (
-    <SecondaryPageShell title="Contact FormSmash">
-      <div className="lg:rounded-lg lg:border lg:border-border-primary lg:p-6 lg:shadow-xl">
+    <SecondaryPageShell title="Contact FormSmash" excludeHr>
+      <div className="mt-4 rounded-lg border border-border-primary p-4 lg:p-6 lg:shadow-xl">
         <div className="lg:grid lg:grid-cols-2 lg:gap-18">
           <div className="flex flex-col gap-8 lg:gap-14">
             <p className="lg:text-lg">
@@ -85,7 +85,7 @@ export default function ContactPage() {
                 disabled={isSubmitting}
                 value={message}
                 onChange={(event) => setMessage(event.target.value)}
-                className="rounded-lg border border-border-primary p-3 outline-none lg:h-96 lg:bg-white"
+                className="h-48 resize-none rounded-lg border border-border-primary p-3 outline-none lg:h-64 lg:bg-white"
               />
             </div>
             {renderStatusMessage()}

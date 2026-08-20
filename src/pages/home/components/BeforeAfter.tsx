@@ -15,7 +15,7 @@ export default function BeforeAfter() {
       <ScrollViewAnchor ref={scrollObserverRef} />
 
       <div className="flex flex-col items-center justify-center gap-4">
-        <div className="text-3xl lg:text-5xl">Before FormSmash (30s)</div>
+        <div className="text-3xl lg:text-5xl">Before FormSmash</div>
         <img
           src={before}
           alt="Before FormSmash"
@@ -23,7 +23,7 @@ export default function BeforeAfter() {
         />
       </div>
       <div className="flex flex-col items-center justify-center gap-4">
-        <h2 className="text-2xl">After FormSmash (5s)</h2>
+        <h2 className="text-2xl">After FormSmash</h2>
         <img
           src={after}
           alt="After FormSmash"

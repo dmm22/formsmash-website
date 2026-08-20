@@ -15,51 +15,33 @@ export default function Hero() {
     openExternalUrl(import.meta.env.VITE_CHROME_LISTING_URL);
   };
 
-  const heroSectionClasses = `
-    relative
-
-    h-full
-
-    flex
-    flex-col
-    justify-evenly
-    items-center
-    gap-8
-
-    px-4
-
-    lg:grid
-    lg:grid-cols-2
-    lg:place-items-center
-    lg:mx-auto
-    lg:max-w-[90dvw]
-  `;
-
   return (
-    <div data-hero-section className="flex h-screen flex-col">
+    <div data-hero-section className="flex h-screen w-full flex-col">
       <div className="z-40 min-h-18 w-full" />
-      <section className={heroSectionClasses}>
+      <section className="relative flex h-full w-full items-center px-4">
         <ScrollViewAnchor ref={scrollObserverRef} />
-        <div className="flex flex-col items-center justify-center gap-2 lg:items-start lg:gap-4">
-          <h1 className="text-center lg:text-left">
-            Stop entering the same information on every application
-          </h1>
-          <p className="text-center text-lg text-text-secondary">
-            Free. No account required
-          </p>
-          <button
-            onClick={handleCtaButtonClicked}
-            className="rounded-lg bg-accent px-5 py-2.5 text-xl text-white hover:bg-accent-hover"
-          >
-            Add to Chrome
-          </button>
-        </div>
-        <div className="flex items-center justify-center lg:h-full lg:w-full lg:justify-end">
-          <img
-            src={hero}
-            alt="Hero image"
-            className="max-h-full lg:max-h-[80dvh]"
-          />
+        <div className="mx-auto grid w-full max-w-[78rem] items-center gap-8 lg:grid-cols-2">
+          <div className="flex flex-col items-center justify-center gap-2 lg:items-start lg:gap-4">
+            <h1 className="text-center lg:text-left">
+              Stop entering the same information on every application
+            </h1>
+            <p className="text-center text-lg text-text-secondary lg:text-left">
+              Free. No account required
+            </p>
+            <button
+              onClick={handleCtaButtonClicked}
+              className="rounded-lg bg-accent px-5 py-2.5 text-xl text-white hover:bg-accent-hover"
+            >
+              Add to Chrome
+            </button>
+          </div>
+          <div className="flex items-center justify-center lg:h-full lg:justify-end">
+            <img
+              src={hero}
+              alt="Hero image"
+              className="max-h-full lg:max-h-[80dvh]"
+            />
+          </div>
         </div>
       </section>
     </div>

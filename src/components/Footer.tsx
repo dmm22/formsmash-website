@@ -31,7 +31,6 @@ const footerSections: FooterSection[] = [
         label: "Custom GPT",
         externalUrl: import.meta.env.VITE_CUSTOM_GPT_URL,
       },
-      { label: "About FormSmash", path: routes.about.path },
     ],
   },
   {
@@ -71,7 +70,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative flex items-center justify-between gap-4 px-4 py-8 lg:mx-auto lg:w-[90dvw]">
+    <footer className="relative border-t border-border-primary">
+      <div className="relative flex items-center justify-between gap-4 px-4 py-8 lg:mx-auto lg:w-[90dvw]">
       <ScrollViewAnchor ref={scrollObserverRef} />
       <div className="mb-8 hidden flex-col gap-2 lg:flex">
         <div className="flex items-center gap-2">
@@ -97,6 +97,7 @@ export default function Footer() {
             </ul>
           </div>
         ))}
+      </div>
       </div>
     </footer>
   );
