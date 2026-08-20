@@ -1,7 +1,6 @@
 import SecondaryPageShell from "../../components/SecondaryPageShell";
 import { useAnalytics } from "../../contexts/AnalyticsContext";
 import { openExternalUrl } from "../../utils/urlUtils";
-import send from "./assets/send.png";
 import openaiLogo from "./assets/openai_logo.png";
 import useContactForm from "./hooks/useContactForm";
 
@@ -36,7 +35,7 @@ export default function ContactPage() {
   }
 
   return (
-    <SecondaryPageShell src={send} alt="Send" title="Contact FormSmash">
+    <SecondaryPageShell title="Contact FormSmash">
       <div className="lg:rounded-lg lg:border lg:border-border-primary lg:p-6 lg:shadow-xl">
         <div className="lg:grid lg:grid-cols-2 lg:gap-18">
           <div className="flex flex-col gap-8 lg:gap-14">

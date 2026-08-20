@@ -36,22 +36,22 @@ export default function Hero() {
   `;
 
   return (
-    <div className="flex h-screen flex-col">
+    <div data-hero-section className="flex h-screen flex-col">
       <div className="z-40 min-h-18 w-full" />
-      <section data-nav-background="image" className={heroSectionClasses}>
+      <section className={heroSectionClasses}>
         <ScrollViewAnchor ref={scrollObserverRef} />
         <div className="flex flex-col items-center justify-center gap-2 lg:items-start lg:gap-4">
           <h1 className="text-center lg:text-left">
-            Never Type Your Resume Into Another Job Application Again
+            Stop entering the same information on every application
           </h1>
           <p className="text-center text-lg text-text-secondary">
-            The Form Shouldn't Be the Hardest Part of Applying.
+            Free. No account required
           </p>
           <button
             onClick={handleCtaButtonClicked}
-            className="rounded-lg bg-orange-500 px-5 py-2.5 text-xl text-white hover:bg-orange-600"
+            className="rounded-lg bg-accent px-5 py-2.5 text-xl text-white hover:bg-accent-hover"
           >
-            Try it for free
+            Add to Chrome
           </button>
         </div>
         <div className="flex items-center justify-center lg:h-full lg:w-full lg:justify-end">

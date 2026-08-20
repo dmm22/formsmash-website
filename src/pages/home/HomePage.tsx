@@ -9,16 +9,10 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
-      <div
-        data-nav-background="accent"
-        className="border-b border-border-primary bg-accent-gradient"
-      >
+      <div className="border-b border-border-primary bg-accent-gradient">
         <BeforeAfter />
       </div>
-      <div
-        data-nav-background="image"
-        className="border-b border-border-primary"
-      >
+      <div className="border-b border-border-primary">
         <FeatureShowcase
           src={testing}
           alt="Battle Tested"
@@ -36,10 +30,7 @@ export default function HomePage() {
           ]}
         />
       </div>
-      <div
-        data-nav-background="accent"
-        className="border-b border-border-primary bg-accent-gradient text-white"
-      >
+      <div className="border-b border-border-primary bg-accent-gradient text-white">
         <FeatureShowcase
           src={autofillData}
           alt="Autofill Data"
@@ -59,10 +50,7 @@ export default function HomePage() {
         />
       </div>
 
-      <div
-        data-nav-background="image"
-        className="border-b border-border-primary"
-      >
+      <div className="border-b border-border-primary">
         <FeatureShowcase
           src={door}
           alt="Door"
