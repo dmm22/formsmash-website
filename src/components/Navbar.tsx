@@ -5,6 +5,7 @@ import logo from "../assets/logo.svg";
 import { routes } from "../routes";
 import { useAnalytics } from "../contexts/AnalyticsContext";
 import { openExternalUrl } from "../utils/urlUtils";
+import AccountMenu from "./AccountMenu";
 
 function getStickyTransformClass(isHomePage: boolean, isPastHero: boolean) {
   if (!isHomePage) {
@@ -74,34 +75,17 @@ type NavBarContentProps = {
   onHomeClicked: () => void;
   onContactClicked: () => void;
   onInstallClicked: () => void;
-  showInstallButton: boolean;
 };
 
 function NavBarContent({
   onHomeClicked,
   onContactClicked,
   onInstallClicked,
-  showInstallButton,
 }: NavBarContentProps) {
-  function renderInstallButton() {
-    if (!showInstallButton) {
-      return null;
-    }
-
-    return (
-      <button
-        onClick={onInstallClicked}
-        className="rounded-lg bg-accent px-4 py-2 text-sm whitespace-nowrap text-white hover:bg-accent-hover"
-      >
-        Add to Chrome
-      </button>
-    );
-  }
-
   return (
     <div className="relative mx-auto flex w-full items-center justify-between text-text-primary lg:max-w-[90dvw]">
       <NavLogo onHomeClicked={onHomeClicked} />
-      <div className="flex items-center gap-12 lg:gap-20">
+      <div className="flex items-center gap-8 lg:gap-12">
         <Link
           to={routes.contact.path}
           onClick={onContactClicked}
@@ -109,7 +93,13 @@ function NavBarContent({
         >
           {routes.contact.label}
         </Link>
-        {renderInstallButton()}
+        <AccountMenu />
+        <button
+          onClick={onInstallClicked}
+          className="rounded-lg bg-accent px-4 py-2 text-sm whitespace-nowrap text-white hover:bg-accent-hover"
+        >
+          Add to Chrome
+        </button>
       </div>
     </div>
   );
@@ -190,7 +180,6 @@ export default function Navbar() {
           onHomeClicked={handleHomeClicked}
           onContactClicked={handleContactClicked}
           onInstallClicked={handleInstallClicked}
-          showInstallButton={false}
         />
       </nav>
     );
@@ -217,7 +206,6 @@ export default function Navbar() {
           onHomeClicked={handleHomeClicked}
           onContactClicked={handleContactClicked}
           onInstallClicked={handleInstallClicked}
-          showInstallButton={true}
         />
       </nav>
     </>

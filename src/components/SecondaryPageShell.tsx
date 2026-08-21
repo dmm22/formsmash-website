@@ -6,6 +6,7 @@ type SecondaryPageShellProps = {
   src?: string;
   alt?: string;
   excludeHr?: boolean;
+  titleAs?: "h2" | "h3";
   children: ReactNode;
 };
 
@@ -16,6 +17,7 @@ export default function SecondaryPageShell({
   caption,
   children,
   excludeHr = false,
+  titleAs = "h2",
 }: SecondaryPageShellProps) {
   function renderHeaderImage() {
     if (!src) {
@@ -35,13 +37,21 @@ export default function SecondaryPageShell({
     return <p className="text-text-secondary">{caption}</p>;
   }
 
+  function renderTitle() {
+    if (titleAs === "h3") {
+      return <h3 className="text-accent">{title}</h3>;
+    }
+
+    return <h2 className="text-accent">{title}</h2>;
+  }
+
   return (
     <>
       <main className="flex min-h-screen flex-col justify-center gap-6 p-4 lg:mx-auto lg:w-[90dvw]">
         <div className="z-40 min-h-18 w-full" />
         <header className="flex flex-col items-center gap-4">
           {renderHeaderImage()}
-          <h2 className="text-accent">{title}</h2>
+          {renderTitle()}
           {renderCaption()}
         </header>
         {!excludeHr && (
